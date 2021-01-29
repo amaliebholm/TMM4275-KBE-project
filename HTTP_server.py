@@ -8,11 +8,13 @@ PORT_NUMBER = 1234 # Maybe set this to 1234 / So, complete address would be: htt
 
 # Handler of HTTP requests / responses
 class MyHandler(BaseHTTPRequestHandler):
-	def do_HEAD(s):
+	def do_HEAD(self, s):
+		self.s = s
 		s.send_response(200)
 		s.send_header("Content-type", "text/html")
 		s.end_headers()
-	def do_GET(s):
+	def do_GET(self, s):
+		self.s = s
 		"""Respond to a GET request."""
 		s.send_response(200)
 		s.send_header("Content-type", "text/html")
@@ -42,7 +44,8 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('</body></html>', "utf-8"))
 			
 			
-	def do_POST(s):
+	def do_POST(self, s):
+		self.s = s
 
 		s.send_response(200)
 		s.send_header("Content-type", "text/html")
