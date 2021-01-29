@@ -30,13 +30,14 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes("<body><p>Let's order a chair</p>", "utf-8"))
 			s.wfile.write(bytes('</body></html>', "utf-8"))
 		elif path.find("/setSize") != -1:
-			s.wfile.write(bytes('<html><body><h2>Set chair specifications</h2>', "utf-8"))
-			s.wfile.write(bytes('<br>Length of legs:<br><input type="text" name="leg_length" value="0">', "utf-8"))
-			s.wfile.write(bytes('<br>Sidelength of legs:<br><input type="text" name="leg_side" value="0">', "utf-8"))
+			s.wfile.write(bytes('<html><body><h2>Set chair specifications (cm):</h2>', "utf-8"))
+			s.wfile.write(bytes('<br>Legs length:<br><input type="text" name="leg_length" value="0">', "utf-8"))
+			s.wfile.write(bytes('<br>Legs width:<br><input type="text" name="leg_width" value="0">', "utf-8"))
+			s.wfile.write(bytes('<br>Backplate height:<br><input type="text" name="height_backplate" value="0">', "utf-8"))
 			s.wfile.write(bytes('<br>Seat length:<br><input type="text" name="seat_length" value="0">', "utf-8"))
 			s.wfile.write(bytes('<br>Seat width:<br><input type="text" name="seat_width" value="0">', "utf-8"))
-			s.wfile.write(bytes('<br>Backplate height:<br><input type="text" name="height_backplate">', "utf-8"))
-			s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p>If you click the "Submit" button, your order will be sent.</p></body></html>', "utf-8"))
+			s.wfile.write(bytes('<br>Apron height:<br><input type="text" name="apron_height" value="0">', "utf-8"))
+			s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
 		elif path.find("/setLength") != -1:
 			s.wfile.write(bytes('<html><body><h2>Chair</h2>', 'utf-8'))
 			s.wfile.write(bytes('<form action="/setLength" method="post">', 'utf-8'))
@@ -50,8 +51,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
 			s.wfile.write(bytes("<body><p>The path: " + path + "</p>", "utf-8"))
 			s.wfile.write(bytes('</body></html>', "utf-8"))
-			
-			
+
 	def do_POST(s):
 
 		s.send_response(200)
