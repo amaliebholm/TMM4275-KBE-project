@@ -34,8 +34,6 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('<form action="/setLength" method="post">', 'utf-8'))
 			s.wfile.write(bytes('<label for="clength">Set Length:</label><br>', 'utf-8'))
 			s.wfile.write(bytes('<input type="text" id="clength" name="clength" value="100"><br><br>', 'utf-8'))
-            s.wfile.write(bytes('<label for="clength">Set Length:</label><br>', 'utf-8'))
-			s.wfile.write(bytes('<input type="text" id="clength" name="clength" value="100"><br><br>', 'utf-8'))
 			s.wfile.write(bytes('<input type="submit" value="Submit">', 'utf-8'))
 			s.wfile.write(bytes('</form></body></html>', 'utf-8'))
 		else:
