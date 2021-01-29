@@ -56,8 +56,8 @@ class MyHandler(BaseHTTPRequestHandler):
                 '<br>Apron height:<br><input type="text" name="apron_height" value="0">', "utf-8"))
             s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="1">Forrest Brown</option><option value="2">Icy Blue</option><option value="3">Flaming Red</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
             s.wfile.write(bytes('<br>Seat colour:<br><select name="seat_colour" id="seat_colour"><option value="3">Flaming Red</option><option value="2">Icy Blue</option><option value="5">Landscape Green</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-            s.wfile.write(bytes(
-                '<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
+            s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
+            s.wfile.write(bytes('<img src="https://raw.githubusercontent.com/amaliebholm/TMM4275-KBE-project/amalie_test/chair.jpg" width="252" height="400">', "utf-8"))
 
         elif path.find("/setLength") != -1:
             s.wfile.write(bytes('<html><body><h2>Chair</h2>', 'utf-8'))
