@@ -37,7 +37,10 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('<br>Seat length:<br><input type="text" name="seat_length" value="0">', "utf-8"))
 			s.wfile.write(bytes('<br>Seat width:<br><input type="text" name="seat_width" value="0">', "utf-8"))
 			s.wfile.write(bytes('<br>Apron height:<br><input type="text" name="apron_height" value="0">', "utf-8"))
+			s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="brown">Forrest Brown</option><option value="blue">Icy Blue</option><option value="red">Flaming Red</option><option value="yellow">Lightning Yellow</option></select>',"utf-8"))
+			s.wfile.write(bytes('<br>Seat colour:<br><select name="seat_colour" id="seat_colour"><option value="red">Flaming Red</option><option value="blue">Icy Blue</option><option value="green">Landscape Green</option><option value="yellow">Lightning Yellow</option></select>',"utf-8"))
 			s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
+			
 		elif path.find("/setLength") != -1:
 			s.wfile.write(bytes('<html><body><h2>Chair</h2>', 'utf-8'))
 			s.wfile.write(bytes('<form action="/setLength" method="post">', 'utf-8'))
