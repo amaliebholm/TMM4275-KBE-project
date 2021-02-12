@@ -1,10 +1,21 @@
+DefClass: My_Cube (ug_base_part);
+    #Side parameter
+    (number parameter) cube_side: 50;
+(child) block1: 
+    {
+        class, ug_block;
+        Origin, Point(0,0,0);
+        length, cube_side:;
+        width, cube_side:;
+        height, cube_side:;
+    };
 
-DefClass: My_Chair_210201 (ug_base_part);
+    DefClass: My_Chair_210201 (ug_base_part);
     #Parameters for the chair
-    (number parameter) outer_side: <PARAM_SIDE>; # Outer side of the chair
-	(number parameter) inner_depth:  <PARAM_DEPTH>;
-	(number parameter) inner_width: <PARAM_WIDTH>;
-	(number parameter) inner_height: <PARAM_HEIGHT>;
+    (number parameter) outer_side: 1500; # Outer side of the chair
+	(number parameter) inner_depth: 1100;
+	(number parameter) inner_width: 1100;
+	(number parameter) inner_height: 1100;
 	
 	
 (child) outer_block1: 
@@ -27,4 +38,3 @@ DefClass: My_Chair_210201 (ug_base_part);
 		Operation, Subtract;
 		Target, {outer_block1:};
     };
-
