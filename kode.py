@@ -145,6 +145,8 @@ class MyHandler(BaseHTTPRequestHandler):
 
             s.wfile.write(bytes('</form></body></html>', 'utf-8'))
 
+            return leg_length, leg_width, height_backplate, seat_length, seat_width, apron_heigth, chair_colour, seat_colour
+
 
 if __name__ == '__main__':
     server_class = HTTPServer
