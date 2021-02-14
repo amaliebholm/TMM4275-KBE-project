@@ -1,11 +1,31 @@
 #! NX/KF 4.0
 DefClass: My_Chair_template (ug_base_part);
     #Parameters for the chair
-    (number parameter) outer_side: <PARAM_SIDE>; # Outer side of the chair
-	(number parameter) inner_depth: <PARAM_DEPTH>;
-	(number parameter) inner_width: <PARAM_WIDTH>;
-	(number parameter) inner_height: <PARAM_HEIGHT>;
-	
+    (number parameter) leg_length:<PARAM_LEGLENGTH>; # Outer side of the chair
+	(number parameter) leg_width: <PARAM_LEGWIDTH>;
+	(number parameter) back_height: <PARAM_BACK>;
+	(number parameter) apron_height: <PARAM_APRON>;
+    (number parameter) seat_width: <PARAM_SEATWIDTH>;
+    (number parameter) seat_depth: <PARAM_SEATDEPTH>;
+
+    (Canonical Name Parameter Modifiable) color: <PARAM_COLOUR>;
+    (Canonical Name Parameter Modifiable) seat_color: <PARAM_SEATCOLOUR>;
+
+    (number parameter) back_thick: 5;
+    (number parameter) seat_thick: 10;
+
+
+
+
+(child) leg1: 
+    {
+        class, ug_block;
+        Origin, Point(0,0,1);
+        length, leg_width:;
+        width, leg_width:;
+        height, leg_length:;
+        color, ug_askClosestColor(color)
+    };
 	
 (child) outer_block1: 
     {
