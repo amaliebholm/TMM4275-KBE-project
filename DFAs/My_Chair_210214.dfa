@@ -1,14 +1,14 @@
 #! NX/KF 4.0
-DefClass: My_Chair_template (ug_base_part);
+DefClass: My_Chair_210214 (ug_base_part);
     #Parameters for the chair
-    (number parameter) leg_length: <PARAM_LEGLENGTH>; # Outer side of the chair
-	(number parameter) leg_width: <PARAM_LEGWIDTH>;
-	(number parameter) back_height: <PARAM_BACK>;
-	(number parameter) apron_height: <PARAM_APRON>;
-    (number parameter) seat_width: <PARAM_SEATWIDTH>;
-    (number parameter) seat_depth: <PARAM_SEATDEPTH>;
-    (Canonical Name Parameter Modifiable) color: <PARAM_COLOR>;
-    (Canonical Name Parameter Modifiable) color_seat: <PARAM_SEATCOLOR>;
+    (number parameter) leg_length: 400; # <PARAM_LEGLENGTH>; # Outer side of the chair
+	(number parameter) leg_width: 40; #<PARAM_LEGWIDTH>;
+	(number parameter) back_height: 500; #<PARAM_BACK>;
+	(number parameter) apron_height: 60; #<PARAM_APRON>;
+    (number parameter) seat_width: 400; #<PARAM_SEATWIDTH>;
+    (number parameter) seat_depth: 450; #<PARAM_SEATDEPTH>;
+    (Canonical Name Parameter Modifiable) color: MEDIUM_FADED_RED; #<PARAM_COLOR>;
+    (Canonical Name Parameter Modifiable) color_seat: WHITE  ; #<PARAM_SEATCOLOR>;
 
 
     (number parameter) back_thick: 10;
@@ -187,4 +187,20 @@ DefClass: My_Chair_template (ug_base_part);
         length, back_thick:;
         width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
         height, back_height:/7;
+    };
+
+    (Child) seat_color:
+    {
+        Class, ug_body;
+        Feature, {seat:};
+        Layer, 1;
+        color, ug_askClosestColor(color_seat:);
+    };
+
+(Child) chair_color:
+    {
+        Class, ug_body;
+        Feature, {leg1:};
+        Layer, 1;
+        color, ug_askClosestColor(color:);
     };

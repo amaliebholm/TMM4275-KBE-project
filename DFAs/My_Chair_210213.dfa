@@ -7,9 +7,6 @@ DefClass: My_Chair_210213 (ug_base_part);
 	(number parameter) apron_height: 60; #<PARAM_APRON>;
     (number parameter) seat_width: 400; #<PARAM_SEATWIDTH>;
     (number parameter) seat_depth: 600; #<PARAM_SEATDEPTH>;
-    (Canonical Name Parameter Modifiable) color: WHITE; #<PARAM_COLOUR>;
-    (Canonical Name Parameter Modifiable) seat_color: RED ; <PARAM_SEATCOLOUR>;
-
     (number parameter) back_thick: 10;
     (number parameter) seat_thick: 20;
     (number parameter) leg_sidefraction: 30;
@@ -188,20 +185,4 @@ DefClass: My_Chair_210213 (ug_base_part);
         length, back_thick:;
         width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
         height, back_height:/7;
-    };
-
-    (Child) seat_color:
-    {
- 	 Class, ug_body;
- 	 Feature, {seat:};
- 	 Layer, 1;
- 	 color, ug_askClosestColor(seat_color:);
-    };
-
-    (Child) seat_color:
-    {
- 	 Class, ug_body;
- 	 Feature, {back1:};
- 	 Layer, 1;
- 	 color, ug_askClosestColor(color:);
     };
