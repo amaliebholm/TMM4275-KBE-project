@@ -1,5 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+# Manufacturability Checker Server, checking in the parameters set by the customer is within the contraints set by the process engeneer
+
 HOST_NAME = '127.0.0.1' 
 PORT_NUMBER = 4321 # Maybe set this to 1234
 """

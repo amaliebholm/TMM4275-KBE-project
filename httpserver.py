@@ -1,4 +1,5 @@
 # HTTP Server template
+# The wesite the customer sees, uses to specify the mesurements of their order and sending this to the server
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
