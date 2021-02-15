@@ -24,20 +24,20 @@ class MyHandler(BaseHTTPRequestHandler):
 
         # Check what is the path
         path = s.path
-        if path.find("/") != -1 and len(path) == 1:
+        if path.find("/") != -1 and len(path) == 1: #start page 
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
                 bytes("<body><p>Current path: " + path + "</p>", "utf-8"))
             s.wfile.write(bytes('</body></html>', "utf-8"))
-        elif path.find("/info") != -1:
+        elif path.find("/info") != -1: #information page
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
                 bytes("<body><p>Current path: " + path + "</p>", "utf-8"))
             s.wfile.write(bytes("<body><p>Let's order a chair</p>", "utf-8"))
             s.wfile.write(bytes('</body></html>', "utf-8"))
-        elif path.find("/setSize") != -1:
+        elif path.find("/setSize") != -1: #setting sizes to the chair 
             s.wfile.write(
                 bytes('<html><body><h2>Set chair specifications (cm):</h2>', "utf-8"))
             s.wfile.write(
@@ -122,7 +122,8 @@ class MyHandler(BaseHTTPRequestHandler):
                 newSplit.append(i.split("="))
 
             print(newSplit)
-
+            
+            # splitting the information into the parameters they describe
             leg_length = int(newSplit[0][1])
             leg_width = int(newSplit[1][1])
             height_backplate = int(newSplit[2][1])
@@ -146,6 +147,7 @@ class MyHandler(BaseHTTPRequestHandler):
             s.wfile.write(bytes('</form></body></html>', 'utf-8'))
 
             return leg_length, leg_width, height_backplate, seat_length, seat_width, apron_heigth, chair_colour, seat_colour
+            # return all the parameters the customer has decided 
 
 
 if __name__ == '__main__':
