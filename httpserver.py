@@ -1,12 +1,18 @@
 # HTTP Server template
 # The wesite the customer sees, uses to specify the mesurements of their order and sending this to the server
 
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 HOST_NAME = '127.0.0.1'  # locathost - http://127.0.0.1
 # Maybe set this to 1234 / So, complete address would be: http://127.0.0.1:1234
 PORT_NUMBER = 1234
-# Web servers example: http://www.ntnu.edu:80
+
+dfaPath = "K:\\Biblioteker\\Dokumenter\\Skole\\Automatisering\\TMM4275-KBE-project\\DFAs\\"
+
+f = open(dfaPath + "templates\\My_Chair_template.dfa", "r")
+fileContent = f.read()
+f.close()
 
 # Handler of HTTP requests / responses
 
@@ -25,22 +31,22 @@ class MyHandler(BaseHTTPRequestHandler):
 
         # Check what is the path
         path = s.path
-        if path.find("/") != -1 and len(path) == 1: #start page 
+        if path.find("/") != -1 and len(path) == 1:
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
                 bytes("<body><p>Current path: " + path + "</p>", "utf-8"))
             s.wfile.write(bytes('</body></html>', "utf-8"))
-        elif path.find("/info") != -1: #information page
+        elif path.find("/info") != -1:
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
                 bytes("<body><p>Current path: " + path + "</p>", "utf-8"))
             s.wfile.write(bytes("<body><p>Let's order a chair</p>", "utf-8"))
             s.wfile.write(bytes('</body></html>', "utf-8"))
-        elif path.find("/setSize") != -1: #setting sizes to the chair 
+        elif path.find("/setSize") != -1:
             s.wfile.write(
-                bytes('<html><body><h2>Set chair specifications (cm):</h2>', "utf-8"))
+                bytes('<html><body><h2>Set chair specifications (mm):</h2>', "utf-8"))
             s.wfile.write(
                 bytes('<form action="/setSize" method="post">', 'utf-8'))
             s.wfile.write(bytes(
@@ -122,9 +128,6 @@ class MyHandler(BaseHTTPRequestHandler):
             for i in splitString:
                 newSplit.append(i.split("="))
 
-            print(newSplit)
-            
-            # splitting the information into the parameters they describe
             leg_length = int(newSplit[0][1])
             leg_width = int(newSplit[1][1])
             height_backplate = int(newSplit[2][1])
@@ -134,21 +137,38 @@ class MyHandler(BaseHTTPRequestHandler):
             chair_colour = int(newSplit[6][1])
             seat_colour = int(newSplit[7][1])
 
-            print(leg_length, leg_width, height_backplate,
-                  seat_length, seat_width, apron_heigth, chair_colour, seat_colour)
+            #print(leg_length, leg_width, height_backplate,
+            #      seat_length, seat_width, apron_heigth, chair_colour, seat_colour)
 
             s.wfile.write(bytes('<html><body><h2>Chair</h2>', 'utf-8'))
-            s.wfile.write(
-                bytes('<form action="/setSize" method="post">', 'utf-8'))
-            s.wfile.write(
-                bytes('<label for="Thanks">Thank you for your order!</label><br>', 'utf-8'))
+            s.wfile.write(bytes('<form action="/setSize" method="post">', 'utf-8'))
+            s.wfile.write(bytes('<label for="Thanks">Thank you for your order!</label><br>', 'utf-8'))
 
-            s.wfile.write(bytes('<p>' + param_line + '</p>', 'utf-8'))
+            s.wfile.write(bytes('<p>The following parameters have arrived. Leg length: ' + str(leg_length)
+                 + ', leg width: '+ str(leg_width) + ', backplate length: '+ str(height_backplate)
+                 + ', seat depth: '+ str(seat_length) + ', seat width: '+ str(seat_width) 
+                 + ', apron height: '+ str(apron_heigth) + '</p>', 'utf-8'))
+            s.wfile.write(bytes('<label for="More">Submit again if you wish to order more.</label><br>', 'utf-8'))
 
             s.wfile.write(bytes('</form></body></html>', 'utf-8'))
 
+            fileContentOut = fileContent
+            fileContentOut = fileContentOut.replace("My_Chair_template (ug_base_part)", "My_Chair_Order (ug_base_part)")
+            fileContentOut = fileContentOut.replace("<PARAM_LEGLENGTH>", str(leg_length))
+            fileContentOut = fileContentOut.replace("<PARAM_LEGWIDTH>", str(leg_width))
+            fileContentOut = fileContentOut.replace("<PARAM_BACK>", str(height_backplate))
+            fileContentOut = fileContentOut.replace("<PARAM_APRON>", str(apron_heigth))
+            fileContentOut = fileContentOut.replace("<PARAM_SEATWIDTH>", str(seat_width))
+            fileContentOut = fileContentOut.replace("<PARAM_SEATDEPTH>", str(seat_length))
+            fileContentOut = fileContentOut.replace("<PARAM_COLOR>", str(chair_colour))
+            fileContentOut = fileContentOut.replace("<PARAM_SEATCOLOR>", str(seat_colour))
+            
+
+            f = open(dfaPath + "My_Chair_Order.dfa", "w")
+            f.write(fileContentOut)
+            f.close()
+
             return leg_length, leg_width, height_backplate, seat_length, seat_width, apron_heigth, chair_colour, seat_colour
-            # return all the parameters the customer has decided 
 
 
 if __name__ == '__main__':
