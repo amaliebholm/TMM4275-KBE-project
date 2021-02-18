@@ -15,7 +15,8 @@ HOST_NAME = '127.0.0.1'  # locathost - http://127.0.0.1
 # Maybe set this to 1234 / So, complete address would be: http://127.0.0.1:1234
 PORT_NUMBER = 1234
 
-dfaPath = "K:\\Biblioteker\\Dokumenter\\Skole\\Automatisering\\TMM4275-KBE-project\\DFAs\\"
+
+dfaPath = "C:\\Users\\Documents\\GitHub\\TMM4275-KBE-project\\DFAs\\"
 
 f = open(dfaPath + "templates\\My_Chair_template.dfa", "r")
 fileContent = f.read()
