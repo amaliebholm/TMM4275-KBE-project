@@ -1,3 +1,5 @@
+# Containing /setParamsInterval
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 # Manufacturability Checker Server, checking in the parameters set by the customer is within the contraints set by the process engeneer
@@ -70,7 +72,10 @@ class MyHandler(BaseHTTPRequestHandler):
 	def do_POST(s):
 		global sidePairUp, sidePairLow, depthPairUp, depthPairLow, heightPairUp,  heightPairLow, widthPairUp, widthPairLow, apronPairUp, apronPairLow
 
-		
+		s.send_response(200)
+		s.send_header("Content-type", "text/html")
+		s.end_headers()
+
 		# Check what is the path
 		path = s.path
 		print("Path: ", path)
@@ -105,10 +110,6 @@ class MyHandler(BaseHTTPRequestHandler):
 			print(pairs)
 			print(legLengthMax)
 
-			s.send_response(200)
-			s.send_header("Content-type", "text/html")
-			s.end_headers()
-
 			s.wfile.write(bytes('<html><body><h2>Valid parameter intervals (mm): </h2>', 'utf-8'))
 			s.wfile.write(bytes('<form action="http://127.0.0.1:4321/setParamsIntervals" method="post">', "utf-8"))
 			
@@ -132,7 +133,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p>Click "Submit" to set new parameters.</p></body></html>', "utf-8"))
 			
 			s.wfile.write(bytes('</form></body></html>', 'utf-8'))
-		elif path.find("/orderChair") != -1:
+		elif path.find("/setSize") != -1:
 
 			content_len = int(s.headers.get('Content-Length'))
 			post_body = s.rfile.read(content_len)
@@ -145,11 +146,6 @@ class MyHandler(BaseHTTPRequestHandler):
 			depthPair = pairs[1].split("=")
 			heightPair = pairs[2].split("=")
 			widthPair = pairs[3].split("=")
-			
-			
-			s.send_response(200)
-			s.send_header("Content-type", "text/html")
-			s.end_headers()
 			
 			flagOK = False 
 			if (int(sidePair[1]) < sidePairUp) and (int(sidePair[1]) > sidePairLow):
