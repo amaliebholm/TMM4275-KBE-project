@@ -130,7 +130,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p>Click "Submit" to set new parameters.</p></body></html>', "utf-8"))
 			
 			s.wfile.write(bytes('</form></body></html>', 'utf-8'))
-		elif path.find("/orderChair") != -1:
+		elif path.find("/setSize") != -1:
 
 			content_len = int(s.headers.get('Content-Length'))
 			post_body = s.rfile.read(content_len)
