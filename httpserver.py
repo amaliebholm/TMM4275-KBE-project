@@ -16,7 +16,7 @@ HOST_NAME = '127.0.0.1'  # locathost - http://127.0.0.1
 PORT_NUMBER = 1234
 
 
-dfaPath = "C:\\Users\\Documents\\GitHub\\TMM4275-KBE-project\\DFAs\\"
+dfaPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\DFAs\\"
 
 f = open(dfaPath + "templates\\My_Chair_template.dfa", "r")
 fileContent = f.read()
@@ -172,7 +172,7 @@ class MyHandler(BaseHTTPRequestHandler):
             fileContentOut = fileContentOut.replace("<PARAM_SEATCOLOR>", str(seat_colour))
             
 
-            f = open(dfaPath + "My_Chair_Order.dfa", "w")
+            f = open(dfaPath + "My_Chair_200000.dfa", "w")
             f.write(fileContentOut)
             f.close()
 
