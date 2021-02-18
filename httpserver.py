@@ -1,6 +1,6 @@
 # HTTP Server template
 # The wesite the customer sees, uses to specify the mesurements of their order and sending this to the server
-
+import requests
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -123,6 +123,7 @@ class MyHandler(BaseHTTPRequestHandler):
             param_line = post_body.decode()
             print("Body: ", param_line)
 
+            # Get parameter value
             splitString = param_line.split("&")
             newSplit = []
             for i in splitString:
@@ -137,9 +138,27 @@ class MyHandler(BaseHTTPRequestHandler):
             chair_colour = int(newSplit[6][1])
             seat_colour = int(newSplit[7][1])
 
+            # Check if the parameters are in the range - manufacturability check
+			# Integrating http Post method
+			#url = 'http://127.0.0.1:4321/setSize'
+			#x = requests.post(url, data = 'a=1111&b=1234&c=1500&d=1600')
+			
+			# Gettin and processing a reply
+			replyByChecker = x.text
+			
+			if replyByChecker.find("NOK") != -1:
+				s.wfile.write(bytes('<html><body><h2>Chair</h2>', 'utf-8'))
+                s.wfile.write(bytes('<form action="/setSize" method="post">', 'utf-8'))
+                s.wfile.write(bytes('<label for="Thanks">The mesurements for your chair is not possible.</label><br>', 'utf-8'))
+			else:
+				
+
+
+
             #print(leg_length, leg_width, height_backplate,
             #      seat_length, seat_width, apron_heigth, chair_colour, seat_colour)
-
+            
+            # Give corresponding message to the customer
             s.wfile.write(bytes('<html><body><h2>Chair</h2>', 'utf-8'))
             s.wfile.write(bytes('<form action="/setSize" method="post">', 'utf-8'))
             s.wfile.write(bytes('<label for="Thanks">Thank you for your order!</label><br>', 'utf-8'))
@@ -152,6 +171,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
             s.wfile.write(bytes('</form></body></html>', 'utf-8'))
 
+            # Updating/writing DFA file, set in parameters
             fileContentOut = fileContent
             fileContentOut = fileContentOut.replace("My_Chair_template (ug_base_part)", "My_Chair_Order (ug_base_part)")
             fileContentOut = fileContentOut.replace("<PARAM_LEGLENGTH>", str(leg_length))
@@ -163,7 +183,7 @@ class MyHandler(BaseHTTPRequestHandler):
             fileContentOut = fileContentOut.replace("<PARAM_COLOR>", str(chair_colour))
             fileContentOut = fileContentOut.replace("<PARAM_SEATCOLOR>", str(seat_colour))
             
-
+            # File path 
             f = open(dfaPath + "My_Chair_Order.dfa", "w")
             f.write(fileContentOut)
             f.close()
