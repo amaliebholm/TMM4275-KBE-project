@@ -1,5 +1,6 @@
 # HTTP Server template
 
+# import requests
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 leg_length = 0
@@ -144,6 +145,16 @@ class MyHandler(BaseHTTPRequestHandler):
             apron_heigth = int(newSplit[5][1])
             chair_colour = int(newSplit[6][1])
             seat_colour = int(newSplit[7][1])
+
+            
+			#if replyByChecker.find("NOK") != -1:
+				#TODO - Tell customer not ok.
+                #s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
+			#else:
+				#TODO - Normal reply.
+                #s.wfile.write(bytes('<p> The parameters are NOT within the contraints. </p>', 'utf-8'))
+			
+			# Giving corresponding message to the customer.
 
             #print(leg_length, leg_width, height_backplate,
             #      seat_length, seat_width, apron_heigth, chair_colour, seat_colour)
