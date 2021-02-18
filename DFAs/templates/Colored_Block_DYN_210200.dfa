@@ -1,0 +1,33 @@
+#! NX/KF 4.0
+DefClass: Colored_Block_DYN_210200 (ug_base_part);
+    (number parameter) my_height: <H_PARAM>;
+    (number parameter) my_width: <W_PARAM>;
+    (number parameter) my_length: <L_PARAM>; 
+    # Colored volumes thresholds - yellow in between red and green
+    (number parameter) red: 1000000; # above
+    (number parameter) green: 1000; # below
+
+(child) block1: 
+    {
+        class, ug_block;
+        length, my_length:;
+        width, my_width:;
+        height, my_height:;
+    };
+
+# Body colored depending on the volume of the block
+(Child) body_colored: 
+{ 
+  Class, ug_body; 
+  Feature, {block1:};  
+  Layer, 1; 
+  color, if (getVolume:(block1:length:, block1:width:, block1:height:) > red:) then ug_askClosestColor(RED) 
+	   else if(getVolume:(block1:length:, block1:width:, block1:height:) < green:) then ug_askClosestColor(GREEN)
+	          else ug_askClosestColor(YELLOW); 
+};
+
+# Methods of the class
+(Method Number) getVolume:(Number $length, Number $width, Number $height) 
+  @{
+     $length * $width * $height;
+  };
