@@ -157,9 +157,12 @@ class MyHandler(BaseHTTPRequestHandler):
 							s.wfile.write(bytes('OK', 'utf-8'))
 							print("Params OK")
 							flagOK = True
+							s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
 			if not flagOK:		
 				s.wfile.write(bytes('NOK', 'utf-8'))
 				print("Params Not OK")
+				s.wfile.write(bytes('<p> The parameters are NOT within the contraints. </p>', 'utf-8'))
+			
 			
 			
 			
