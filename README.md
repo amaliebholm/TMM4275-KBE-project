@@ -39,16 +39,22 @@ This is an ULM sketch, showing how an order making scenario will play out. From 
 
 ### Development Tools
 
-This code was made using python in Visual Studio Code. Knowledge Fusion was used in NX to make models of the chair and Olingvi and Apache Jena Fuseki was used to communicate with the server containing the parameters, set by both the customer and the product engineer. 
+This code was made using python in Visual Studio Code. Knowledge Fusion was used in NX to make models of the chair and Olingvo and Apache Jena Fuseki was used to communicate with the server containing the parameters, set by both the customer and the product engineer. 
 
 To run the code you will need to hace a running Fuseki-Server and an correct Owl-file (in the Owl-folder) uploaded to the server. You also need tho change the paths in the code, to match the paths on yor own computer. 
 
 
 ### Code Description 
 
-- `httpServer.py`
-- `manudChecker.py`
-- ....
+- `httpServer.py` - Setting ut the web-page that the customer uses to place an order
+- `manudChecker.py` - Setting ut the web-page that the engineer uses to define the constraints. 
+- .. 
+
+### OWLs
+- `chair.owl` - File made in Olingvo and uploaded to Fuseki, making the model of the chair availavble, reachable from the web-pages, on the server
+
+### DAFs
+- `My_Chair_template.daf` - Containing the NX file of the chair template, this is used as the template which every oderer modify to the customers whishes
 
 
 ### Examples of 3 product orders
