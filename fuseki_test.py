@@ -34,7 +34,7 @@ r = requests.post(url = URL, data = PARAMS)
 print("Result for DELETE query:", r.text)
 		
 
-PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?apron kbe:apronMax ?"25" ^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE { ?apron a kbe:Apron.}'} 
+PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?apron kbe:apronMax "' + str(25) + '" ^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE { ?apron a kbe:Apron.}'} 
 
 # sending get request and saving the response as response object 
 r = requests.post(url = URL, params = PARAMS) 
