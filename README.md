@@ -17,10 +17,10 @@ The image below show a NX modelling of the cair:
 the customer is able to define the following parameters for thir chair: 
 * Length of legs
 * Width of legs
-* Hight og the back
+* Hight of the back
 * Depth of the seat
 * Width of the seat
-* Lenth og apron
+* Lenth of apron
 
 
 ### The KBE Application Architecture
