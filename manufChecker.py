@@ -191,12 +191,16 @@ def setConstraints(s, constraint, value):
 	print("Result for DELETE query:", r.text)
 		
 	# Defining a query to INSERT new value.
-	# Check if it is top or leg.
+	# Check if it is aprin, backplate, leg or seat
 	type = ''
-	if constraint.find("Top") != -1:
-		type = "TopCutter"
-	else:
-		type = "LegCutter"
+	if constraint.find("Apron") != -1:
+		type = "Apron"
+	elif constraint.fin("Back") != -1:
+		type = "Backplate"
+	elif constraint.fin("Leg") != -1:
+		type = "Leg"
+	elif constraint.fin("Seat") != -1:
+		type = "Seat"
 		
 	PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?topcutter kbe:' + constraint + ' "' + str(value) + '"^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE { ?topcutter a kbe:' + type + '.}'} 
 		  
