@@ -207,7 +207,7 @@ class MyHandler(BaseHTTPRequestHandler):
 def checkAgainstConstraints(s, constraint, param):
     # Function retrieving the constraints from the database, and checking if the parameters are valid
 
-	global leg_length, leg_side, seat_length, seat_width, height_backplate, productOK
+	global leg_length, leg_side, seat_length, seat_width, height_backplate, flagOK
     URL = "http://127.0.0.1:3030/kbe/query"
 
     # Recieving data from fuseki-server

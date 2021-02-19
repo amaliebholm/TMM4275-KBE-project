@@ -1,3 +1,4 @@
+import requests
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 HOST_NAME = '127.0.0.1' 
@@ -182,16 +183,17 @@ def setConstraints(s, constraint, value):
   
 	# Defining a query in oder to delete previous value
 	PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?topcutter kbe:' + constraint + ' ?min.} WHERE { ?topcutter kbe:' + constraint +' ?min.}'}
-	# sending get request and saving the response as response object 
+	
+	# Sending get request and saving the returning parameters
 	r = requests.post(url = URL, data = PARAMS) 
 
 	#Checking the result
 	print("Result for DELETE query:", r.text)
 		
-	# Step 2: defining a query to INSERT new value.
+	# Defining a query to INSERT new value.
 	# Check if it is top or leg.
 	type = ''
-	if constrain.find("Top") != -1:
+	if constraint.find("Top") != -1:
 		type = "TopCutter"
 	else:
 		type = "LegCutter"
