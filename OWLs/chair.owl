@@ -78,6 +78,14 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Property>
+  <Apron rdf:about="http://www.kbe_chair.com/.owl#apron_Max">
+    <apronMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >40</apronMax>
+  </Apron>
+  <Apron rdf:about="http://www.kbe_chair.com/.owl#apron_Min">
+    <apronMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1</apronMin>
+  </Apron>
   <owl:DataRange>
     <owl:oneOf rdf:parseType="Resource">
       <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
