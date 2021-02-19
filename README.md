@@ -25,7 +25,7 @@ the customer is able to define the following parameters for thir chair:
 
 ### The KBE Application Architecture
 
-
+![Client-Server](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Client-Server.png)
 
 
 ### An Order Making Scenario
@@ -40,9 +40,9 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 ### Code Description 
 
--- hhtpServer.py
--- manufChecker.py
--- ... 
+- `httpServer.py`
+- `manudChecker.py`
+- ....
 
 
 ### Examples of 3 product orders
