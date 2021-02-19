@@ -9,7 +9,7 @@ This project is made by:
 * Amalie Berge Holm
 
 
-## The Chair
+### The Chair
 
 The image below show a NX modelling of the cair: 
 ![Chair_NX](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Chair_NX.PNG)
@@ -23,26 +23,26 @@ the customer is able to define the following parameters for thir chair:
 * Lenth og apron
 
 
-## The KBE Application Architecture
+### The KBE Application Architecture
 
 
 
 
-## An Order Making Scenario
+### An Order Making Scenario
 
 
-## Development Tools
+### Development Tools
 
 This code was made using python in Visual Studio Code. Knowledge Fusion was used in NX to make models of the chair and Olingvi and Apache Jena Fuseki was used to communicate with the server containing the parameters, set by both the customer and the product engineer. 
 
 To run the code you will need to hace a running Fuseki-Server and an correct Owl-file (in the Owl-folder) uploaded to the server. You also need tho change the paths in the code, to match the paths on yor own computer. 
 
 
-## Code Description 
+### Code Description 
 
 -- hhtpServer.py
 -- manufChecker.py
 -- ... 
 
 
-## Examples of 3 product orders
+### Examples of 3 product orders
