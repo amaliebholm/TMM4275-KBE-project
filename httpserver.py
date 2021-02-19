@@ -136,17 +136,31 @@ class MyHandler(BaseHTTPRequestHandler):
             newSplit = []
             for i in splitString:
                 newSplit.append(i.split("="))
-
-            leg_length = int(newSplit[0][1])
-            leg_width = int(newSplit[1][1])
-            height_backplate = int(newSplit[2][1])
-            seat_length = int(newSplit[3][1])
-            seat_width = int(newSplit[4][1])
-            apron_heigth = int(newSplit[5][1])
-            chair_colour = int(newSplit[6][1])
-            seat_colour = int(newSplit[7][1])
+            
+                leg_length = int(newSplit[0][1])
+                leg_width = int(newSplit[1][1])
+                height_backplate = int(newSplit[2][1])
+                seat_length = int(newSplit[3][1])
+                seat_width = int(newSplit[4][1])
+                apron_heigth = int(newSplit[5][1])
+                chair_colour = int(newSplit[6][1])
+                seat_colour = int(newSplit[7][1])
 
             
+
+            s.checkAgainstConstraints("legLengthMax", legLengthMax)
+			s.checkAgainstConstraints("legLengthMin", legLengthMin)
+			s.checkAgainstConstraints("legWidthMax", legWidthMax)
+			s.checkAgainstConstraints("legWidthMin", legWidthMin)
+			s.checkAgainstConstraints("backMax", backMax)
+			s.checkAgainstConstraints("backMin", backMin)
+			s.checkAgainstConstraints("seatDepthMax", seatDepthMax)
+			s.checkAgainstConstraints("seatDepthMin", seatDepthMin)
+			s.checkAgainstConstraints("seatWidthMax", seatWidthMax)
+			s.checkAgainstConstraints("seatWidthMin", seatWidthMin)
+			s.checkAgainstConstraints("apronMax", apronMax)
+			s.checkAgainstConstraints("apronMin", apronMin)
+
 			#if replyByChecker.find("NOK") != -1:
 				#TODO - Tell customer not ok.
                 #s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
@@ -189,6 +203,44 @@ class MyHandler(BaseHTTPRequestHandler):
 
             return leg_length, leg_width, height_backplate, seat_length, seat_width, apron_heigth, chair_colour, seat_colour
 
+
+def checkAgainstConstraints(s, constraint, param):
+    # Function retrieving the constraints from the database, and checking if the parameters are valid
+
+	global leg_length, leg_side, seat_length, seat_width, height_backplate, productOK
+    URL = "http://127.0.0.1:3030/kbe/query"
+
+    # Recieving data from fuseki-server
+    PARAMS = {'query': 'PREFIX kbe:<http://www.kbe_chair.com/.owl#> SELECT ?data WHERE {?inst kbe:' + constraint + ' ?data.}'}
+
+    # sending get request and saving the response as response object
+    r = requests.get(url=URL, params=PARAMS)
+    data = r.json()
+
+    # Checking the value of the parameter
+    print("Data:", data['results']['bindings'][0]['data']['value'])
+
+    # Update constrain value in design template
+    dataToWrite = data['results']['bindings'][0]['data']['value']
+    f = open(pathToApp + "\\templates\\My_Chair_template.dfa", "r")
+    data = f.read()
+
+    f.close()
+
+    # Checking that the parameters are within the constraints
+    flagOK = False 
+			if (int(sidePair[1]) < sidePairUp) and (int(sidePair[1]) > sidePairLow):
+				if (int(depthPair[1]) < depthPairUp) and (int(depthPair[1]) > depthPairLow):
+					if (int(heightPair[1]) < heightPairUp) and (int(heightPair[1]) > heightPairLow):
+						if (int(widthPair[1]) < widthPairUp) and (int(widthPair[1]) > widthPairLow):
+							s.wfile.write(bytes('OK', 'utf-8'))
+							print("Params OK")
+							flagOK = True
+							s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
+			if not flagOK:		
+				s.wfile.write(bytes('NOK', 'utf-8'))
+				print("Params Not OK")
+				s.wfile.write(bytes('<p> The parameters are NOT within the contraints. </p>', 'utf-8'))
 
 if __name__ == '__main__':
     server_class = HTTPServer

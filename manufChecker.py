@@ -96,12 +96,25 @@ class MyHandler(BaseHTTPRequestHandler):
 			backMin = pairs[5].split("=")[1]
 			seatDepthMax = pairs[6].split("=")[1]
 			seatDepthMin = pairs[7].split("=")[1]
-			seatWidthMax = pairs[4].split("=")[1]
-			seatWidtMin = pairs[5].split("=")[1]
-			apronMax = pairs[6].split("=")[1]
-			apronMin = pairs[7].split("=")[1]
+			seatWidthMax = pairs[8].split("=")[1]
+			seatWidthMin = pairs[9].split("=")[1]
+			apronMax = pairs[10].split("=")[1]
+			apronMin = pairs[11].split("=")[1]
 			print(pairs)
 			print(legLengthMax)
+
+			s.setConstraints("legLengthMax", legLengthMax)
+			s.setConstraints("legLengthMin", legLengthMin)
+			s.setConstraints("legWidthMax", legWidthMax)
+			s.setConstraints("legWidthMin", legWidthMin)
+			s.setConstraints("backMax", backMax)
+			s.setConstraints("backMin", backMin)
+			s.setConstraints("seatDepthMax", seatDepthMax)
+			s.setConstraints("seatDepthMin", seatDepthMin)
+			s.setConstraints("seatWidthMax", seatWidthMax)
+			s.setConstraints("seatWidthMin", seatWidthMin)
+			s.setConstraints("apronMax", apronMax)
+			s.setConstraints("apronMin", apronMin)
 
 			s.send_response(200)
 			s.send_header("Content-type", "text/html")
@@ -144,11 +157,6 @@ class MyHandler(BaseHTTPRequestHandler):
 			heightPair = pairs[2].split("=")
 			widthPair = pairs[3].split("=")
 			
-			
-			s.send_response(200)
-			s.send_header("Content-type", "text/html")
-			s.end_headers()
-			
 			flagOK = False 
 			if (int(sidePair[1]) < sidePairUp) and (int(sidePair[1]) > sidePairLow):
 				if (int(depthPair[1]) < depthPairUp) and (int(depthPair[1]) > depthPairLow):
@@ -157,14 +165,46 @@ class MyHandler(BaseHTTPRequestHandler):
 							s.wfile.write(bytes('OK', 'utf-8'))
 							print("Params OK")
 							flagOK = True
-							s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
+							#s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
 			if not flagOK:		
 				s.wfile.write(bytes('NOK', 'utf-8'))
 				print("Params Not OK")
-				s.wfile.write(bytes('<p> The parameters are NOT within the contraints. </p>', 'utf-8'))
+				#s.wfile.write(bytes('<p> The parameters are NOT within the contraints. </p>', 'utf-8'))
+			
+			s.send_response(200)
+			s.send_header("Content-type", "text/html")
+			s.end_headers()
 			
 			
 			
+def setConstraints(s, constraint, value):
+	URL = "http://127.0.0.1:3030/kbe/update"
+  
+	# Defining a query in oder to delete previous value
+	PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?topcutter kbe:' + constraint + ' ?min.} WHERE { ?topcutter kbe:' + constraint +' ?min.}'}
+	# sending get request and saving the response as response object 
+	r = requests.post(url = URL, data = PARAMS) 
+
+	#Checking the result
+	print("Result for DELETE query:", r.text)
+		
+	# Step 2: defining a query to INSERT new value.
+	# Check if it is top or leg.
+	type = ''
+	if constrain.find("Top") != -1:
+		type = "TopCutter"
+	else:
+		type = "LegCutter"
+		
+	PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?topcutter kbe:' + constraint + ' "' + str(value) + '"^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE { ?topcutter a kbe:' + type + '.}'} 
+		  
+	# sending get request and saving the response as response object 
+	r = requests.post(url = URL, data = PARAMS) 
+
+	#Checking the result
+	print("Result of INSERT query:", r.text)
+
+
 			
  
 if __name__ == '__main__':
