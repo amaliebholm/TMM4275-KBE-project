@@ -25,7 +25,7 @@ print("JSON:", data)
 URL = "http://127.0.0.1:3030/kbe/update"
 
 # Defining a query in oder to delete previous value
-PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?class kbe:Apron ?var.} WHERE {?apron a kbe:Apron.?Apron kbe:apronMax ?var.}'}
+PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?apron kbe:apronMax ?var.} WHERE { ?apron kbe:apronMax ?var.}'}
 	
 # Sending get request and saving the returning parameters
 r = requests.post(url = URL, data = PARAMS) 
@@ -34,7 +34,7 @@ r = requests.post(url = URL, data = PARAMS)
 print("Result for DELETE query:", r.text)
 		
 
-PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?apron kbe:Apron' + str(25) + '"^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE  {?apron a kbe:Apron.?Apron kbe:apronMax ?var.}'}
+PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?apron kbe:apronMax "' + str(25) + '"^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE { ?apron a kbe:Apron.}'} 
 
 # sending get request and saving the response as response object 
 r = requests.post(url = URL, params = PARAMS) 
