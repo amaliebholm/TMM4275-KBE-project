@@ -25,10 +25,16 @@ the customer is able to define the following parameters for thir chair:
 
 ### The KBE Application Architecture
 
+This is a diagram showing Client-Server architecture, and how the information travels through the different sercers and tools to make it possible for the customer to order the chair. 
+
 ![Client-Server](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Client-Server.png)
 
 
 ### An Order Making Scenario
+
+This is an ULM sketch, showing how an order making scenario will play out. From the enineer defining constraits and the customer defining parameters for the chair, to the order being made. 
+
+![ULM_Sketch](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/ULM_Sketch.PNG)
 
 
 ### Development Tools
