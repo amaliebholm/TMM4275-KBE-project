@@ -1,12 +1,12 @@
 #! NX/KF 4.0
 DefClass: My_Chair_Order (ug_base_part);
     #Parameters for the chair
-    (number parameter) leg_length: 1000; # Outer side of the chair
-	(number parameter) leg_width: 100;
-	(number parameter) back_height: 1000;
-	(number parameter) apron_height: 40;
-    (number parameter) seat_width: 400;
-    (number parameter) seat_depth: 400;
+    (number parameter) leg_length: 900; # Outer side of the chair
+	(number parameter) leg_width: 150;
+	(number parameter) back_height: 900;
+	(number parameter) apron_height: 150;
+    (number parameter) seat_width: 800;
+    (number parameter) seat_depth: 800;
     (Canonical Name Parameter Modifiable) color: 1;
     (Canonical Name Parameter Modifiable) color_seat: 3;
 
@@ -58,10 +58,8 @@ DefClass: My_Chair_Order (ug_base_part);
         class, ug_block;
         Origin, Point(0,0,leg_length:);
         length, seat_depth:;
-        width, 10000;
+        width, seat_width:;
         height, seat_thick:;
-        Operation, Unite;
-        Target, {leg3};
     };
 
     (child) rear_spindle:{

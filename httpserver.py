@@ -1,6 +1,7 @@
 # HTTP Server template
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import requests
 
 leg_length = 0
 leg_width = 0
@@ -143,6 +144,30 @@ class MyHandler(BaseHTTPRequestHandler):
             apron_heigth = int(newSplit[5][1])
             chair_colour = int(newSplit[6][1])
             seat_colour = int(newSplit[7][1])
+
+             
+
+            manuf_constraints = ["legLengthMax","legLengthMin", "legWidthMax", "legWidthMin",
+                "backMax", "backMin", "seatDepthMax", "seatDepthMin",
+                "seatWidthMax", "seatWidthMin", "apronMax", "apronMin"]
+            manuf_results = []
+            URL = "http://127.0.0.1:3030/kbe/query"
+
+            for c in manuf_constraints:
+                PARAMS = {'query':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> SELECT ?data WHERE {?inst kbe:' + c + ' ?data.}'} 
+                # sending get request and saving the response as response object 
+                r = requests.get(url = URL, params = PARAMS) 
+                data = r.json()
+                manuf_results.append(int(data['results']['bindings'][0]['data']['value']))
+                print(c, data['results']['bindings'][0]['data']['value'])
+            print(manuf_results)
+            if leg_length < manuf_results[0] and leg_length > manuf_results[1]:
+                if leg_width < manuf_results[2] and leg_width > manuf_results[3]:
+                    if height_backplate < manuf_results[4] and height_backplate > manuf_results[5]:
+                        if seat_length < manuf_results[6] and seat_length > manuf_results[7]:
+                            if seat_width < manuf_results[8] and seat_width > manuf_results[9]:
+                                if apron_heigth < manuf_results[10] and apron_heigth > manuf_results[11]:
+                                    print("OK")
 
             #print(leg_length, leg_width, height_backplate,
             #      seat_length, seat_width, apron_heigth, chair_colour, seat_colour)
