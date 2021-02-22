@@ -117,7 +117,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
             for i in range(len(manuf_constraints)):
                 # Deleting the current constraint
-                PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {kbe:chair kbe:'+ manuf_constraints[i] +' ?value.} WHERE {kbe:chair kbe:'+ manuf_constraints[i] +' ?value.}'} 
+                PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> DELETE {kbe:chair kbe:'+ manuf_constraints[i] +' ?value.} WHERE {kbe:chair kbe:'+ manuf_constraints[i] +' ?value.}'} 
 
                 # Sending get request and saving the response as response object 
                 r = requests.post(url = URL, data = PARAMS) 
