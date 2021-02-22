@@ -1,12 +1,12 @@
 #! NX/KF 4.0
 DefClass: My_Chair_Order (ug_base_part);
     #Parameters for the chair
-    (number parameter) leg_length: 900; # Outer side of the chair
+    (number parameter) leg_length: 600; # Outer side of the chair
 	(number parameter) leg_width: 150;
-	(number parameter) back_height: 900;
+	(number parameter) back_height: 600;
 	(number parameter) apron_height: 150;
-    (number parameter) seat_width: 800;
-    (number parameter) seat_depth: 800;
+    (number parameter) seat_width: 600;
+    (number parameter) seat_depth: 600;
     (Canonical Name Parameter Modifiable) color: 1;
     (Canonical Name Parameter Modifiable) color_seat: 3;
 
