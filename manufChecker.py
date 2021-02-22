@@ -1,4 +1,3 @@
-import requests
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 HOST_NAME = '127.0.0.1' 
@@ -97,25 +96,14 @@ class MyHandler(BaseHTTPRequestHandler):
 			backMin = pairs[5].split("=")[1]
 			seatDepthMax = pairs[6].split("=")[1]
 			seatDepthMin = pairs[7].split("=")[1]
-			seatWidthMax = pairs[8].split("=")[1]
-			seatWidthMin = pairs[9].split("=")[1]
-			apronMax = pairs[10].split("=")[1]
-			apronMin = pairs[11].split("=")[1]
+			seatWidthMax = pairs[4].split("=")[1]
+			seatWidtMin = pairs[5].split("=")[1]
+			apronMax = pairs[6].split("=")[1]
+			apronMin = pairs[7].split("=")[1]
 			print(pairs)
 			print(legLengthMax)
 
-			s.setConstraints("legLengthMax", legLengthMax)
-			s.setConstraints("legLengthMin", legLengthMin)
-			s.setConstraints("legWidthMax", legWidthMax)
-			s.setConstraints("legWidthMin", legWidthMin)
-			s.setConstraints("backMax", backMax)
-			s.setConstraints("backMin", backMin)
-			s.setConstraints("seatDepthMax", seatDepthMax)
-			s.setConstraints("seatDepthMin", seatDepthMin)
-			s.setConstraints("seatWidthMax", seatWidthMax)
-			s.setConstraints("seatWidthMin", seatWidthMin)
-			s.setConstraints("apronMax", apronMax)
-			s.setConstraints("apronMin", apronMin)
+			# for loop deleting and inserting the new values to the server
 
 			s.send_response(200)
 			s.send_header("Content-type", "text/html")
@@ -144,7 +132,7 @@ class MyHandler(BaseHTTPRequestHandler):
 			s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p>Click "Submit" to set new parameters.</p></body></html>', "utf-8"))
 			
 			s.wfile.write(bytes('</form></body></html>', 'utf-8'))
-		elif path.find("/setSize") != -1:
+		elif path.find("/orderChair") != -1:
 
 			content_len = int(s.headers.get('Content-Length'))
 			post_body = s.rfile.read(content_len)
@@ -158,6 +146,11 @@ class MyHandler(BaseHTTPRequestHandler):
 			heightPair = pairs[2].split("=")
 			widthPair = pairs[3].split("=")
 			
+			
+			s.send_response(200)
+			s.send_header("Content-type", "text/html")
+			s.end_headers()
+			
 			flagOK = False 
 			if (int(sidePair[1]) < sidePairUp) and (int(sidePair[1]) > sidePairLow):
 				if (int(depthPair[1]) < depthPairUp) and (int(depthPair[1]) > depthPairLow):
@@ -166,51 +159,11 @@ class MyHandler(BaseHTTPRequestHandler):
 							s.wfile.write(bytes('OK', 'utf-8'))
 							print("Params OK")
 							flagOK = True
-							#s.wfile.write(bytes('<p> The parameters are within the contraints. </p>', 'utf-8'))
 			if not flagOK:		
 				s.wfile.write(bytes('NOK', 'utf-8'))
 				print("Params Not OK")
-				#s.wfile.write(bytes('<p> The parameters are NOT within the contraints. </p>', 'utf-8'))
-			
-			s.send_response(200)
-			s.send_header("Content-type", "text/html")
-			s.end_headers()
 			
 			
-			
-def setConstraints(s, constraint, value):
-	URL = "http://127.0.0.1:3030/kbe/update"
-  
-	# Defining a query in oder to delete previous value
-	PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?topcutter kbe:' + constraint + ' ?min.} WHERE { ?topcutter kbe:' + constraint +' ?min.}'}
-	
-	# Sending get request and saving the returning parameters
-	r = requests.post(url = URL, data = PARAMS) 
-
-	#Checking the result
-	print("Result for DELETE query:", r.text)
-		
-	# Defining a query to INSERT new value.
-	# Check if it is aprin, backplate, leg or seat
-	type = ''
-	if constraint.find("Apron") != -1:
-		type = "Apron"
-	elif constraint.fin("Back") != -1:
-		type = "Backplate"
-	elif constraint.fin("Leg") != -1:
-		type = "Leg"
-	elif constraint.fin("Seat") != -1:
-		type = "Seat"
-		
-	PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT { ?topcutter kbe:' + constraint + ' "' + str(value) + '"^^<http://www.w3.org/2001/XMLSchema#int>.} WHERE { ?topcutter a kbe:' + type + '.}'} 
-		  
-	# sending get request and saving the response as response object 
-	r = requests.post(url = URL, data = PARAMS) 
-
-	#Checking the result
-	print("Result of INSERT query:", r.text)
-
-
 			
  
 if __name__ == '__main__':
