@@ -34,7 +34,7 @@ This is a diagram showing Client-Server architecture, and how the information tr
 
 This is an ULM sketch, showing how an order making scenario will play out. From the enineer defining constraits and the customer defining parameters for the chair, to the order being made. 
 
-![ULM](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/ULM.png)
+![ULM:PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/ULM.PNG)
 
 
 ### Development Tools
