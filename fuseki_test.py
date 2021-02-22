@@ -20,7 +20,7 @@ print("JSON:", data)
 
 
   
-                            #SELECT ?var WHERE {?apron a kbe:Apron.?Apron kbe:apronMax ?var.}
+#SELECT ?var WHERE {?apron a kbe:Apron.?Apron kbe:apronMax ?var.}
 
 URL = "http://127.0.0.1:3030/kbe/update"
 
