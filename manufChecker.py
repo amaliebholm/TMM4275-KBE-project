@@ -115,17 +115,8 @@ class MyHandler(BaseHTTPRequestHandler):
 
             URL = "http://127.0.0.1:3030/kbe/update"
 
-            for i in range(len(manuf_constraints)):
-                # Deleting the current constraint
-                PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> DELETE {kbe:chair kbe:'+ manuf_constraints[i] +' ?value.} WHERE {kbe:chair kbe:'+ manuf_constraints[i] +' ?value.}'} 
-
-                # Sending get request and saving the response as response object 
-                r = requests.post(url = URL, data = PARAMS) 
-
-                # Checking the result
-                print("Result for DELETE:", r.text)
-
-                # Inserting to the right Class in the Class Hierarchy: Apron, Backplate, Leg or Seat
+            for i in range(11):
+                 # Inserting to the right Class in the Class Hierarchy: Apron, Backplate, Leg or Seat
                 if -1 < i < 4:
                     ch = "Leg"
                 elif 3 < i < 6:
@@ -135,11 +126,24 @@ class MyHandler(BaseHTTPRequestHandler):
                 elif 9 < i < 11:
                     ch = "Apron"
 
+                # Deleting the current constraint
+                PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?'+ ch +' kbe:'+ manuf_constraints[i] +' ?value.} WHERE {?'+ ch +' kbe:'+ manuf_constraints[i] +' ?value.}'} 
+                
+                #PARAMS = {​​'update':'PREFIX kbe:<http://kbe.openode.io/table-kbe.owl#> DELETE {​​?BackCutter kbe:' + constrain + ' ?min.}​​ WHERE {​​ ?BackCutter kbe:' + constrain +' ?min.}​​'}
+
+                # Sending get request and saving the response as response object 
+                r = requests.post(url = URL, data = PARAMS) 
+
+                # Checking the result
+                print("Result for DELETE:", r.text)
+
+               
+
                 # Inserting the new constraint value
-                PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT {kbe:chair kbe:'+ manuf_constraints[i] +' " '+ str(new_constaints[i]) +' "^^<http://www.w3.org/2001/XMLSchema#string>.} WHERE {kbe:chair a kbe:'+ ch +' .}'} 
+                PARAMS = {'update': 'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT {?'+ ch +' kbe:'+ manuf_constraints[i] +' " '+ str(new_constaints[i]) +' "^^<http://www.w3.org/2001/XMLSchema#string>.} WHERE {?'+ ch +' a kbe:'+ ch +' .}'} 
                 
                 # sending get request and saving the response as response object 
-                r = requests.post(url = URL, data = PARAMS) 
+                r = requests.post(url = URL, data = PARAMS)  
 
                 # Checking the result
                 print("Result for INSERT:", r.text)
