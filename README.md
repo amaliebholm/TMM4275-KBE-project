@@ -12,7 +12,7 @@ This project is made by:
 ### The Chair
 
 The image below show a NX modelling of the cair: 
-![Chair_NX](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Chair_NX.PNG)
+![Chair_NX](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Chair_NX.PNG)
 
 the customer is able to define the following parameters for thir chair: 
 * Length of legs
