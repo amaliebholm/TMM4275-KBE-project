@@ -4,6 +4,20 @@ import requests
 HOST_NAME = '127.0.0.1' 
 PORT_NUMBER = 4321 # Maybe set this to 1234
 
+legLengthMax = 2000
+legLengthMin = 0
+legWidthMax = 1000
+legWidthMin = 0
+backMax = 2000
+backMin = 0
+seatDepthMax = 2000
+seatDepthMin = 0
+seatWidthMax = 2000
+seatWidtMin = 0
+apronMax = 1000
+apronMin = 0
+
+
 # Handler of HTTP requests / responses
 class MyHandler(BaseHTTPRequestHandler):
     def do_HEAD(s):

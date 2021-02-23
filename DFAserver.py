@@ -3,6 +3,15 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import requests
 
+leg_length = 0
+leg_width = 0
+height_backplate = 0
+seat_length = 0
+seat_width = 0
+apron_heigth = 0
+chair_colour = 0
+seat_colour = 0
+
 HOST_NAME = '127.0.0.1'  # locathost - http://127.0.0.1
 # Maybe set this to 1234 / So, complete address would be: http://127.0.0.1:1234
 PORT_NUMBER = 1234
