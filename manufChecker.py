@@ -94,7 +94,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
             URL = "http://127.0.0.1:3030/kbe/update"
 
-            for i in range(11):
+            for i in range(len(manuf_constraints)):
                  # Inserting to the right Class in the Class Hierarchy: Apron, Backplate, Leg or Seat
                 if -1 < i < 4:
                     ch = "Leg"
