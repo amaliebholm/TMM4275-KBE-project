@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<licenseSummary>
+  <dependencies>
+    <dependency>
+      <groupId>antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>2.7.7</version>
+      <licenses>
+        <license>
+          <name>BSD License</name>
+          <url>http://www.antlr.org/license.html</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.clarkparsia.pellet</groupId>
+      <artifactId>pellet-jena</artifactId>
+      <version>2.3.1-bb9173de81</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ansell.aterms</groupId>
+      <artifactId>aterm-java</artifactId>
+      <version>1.8.2-p1</version>
+      <licenses>
+        <license>
+          <name>BSD license</name>
+          <url>https://github.com/ansell/aterms/blob/master/aterm-java/COPYING</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ansell.aterms</groupId>
+      <artifactId>shared-objects</artifactId>
+      <version>1.4.9-p1</version>
+      <licenses>
+        <license>
+          <name>BSD license</name>
+          <url>https://github.com/ansell/aterms/blob/master/shared-objects/COPYING</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ansell.jjtraveler</groupId>
+      <artifactId>jjtraveler</artifactId>
+      <version>0.6</version>
+      <licenses>
+        <license>
+          <name>BSD license</name>
+          <url>https://github.com/ansell/jjtraveler/blob/master/COPYING</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ansell.pellet</groupId>
+      <artifactId>pellet-common</artifactId>
+      <version>2.3.6-ansell</version>
+      <licenses>
+        <license>
+          <name>GNU Affero General Public License 3.0</name>
+          <url>http://www.fsf.org/licensing/licenses/agpl-3.0.html</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ansell.pellet</groupId>
+      <artifactId>pellet-core</artifactId>
+      <version>2.3.6-ansell</version>
+      <licenses>
+        <license>
+          <name>GNU Affero General Public License 3.0</name>
+          <url>http://www.fsf.org/licensing/licenses/agpl-3.0.html</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>com.github.ansell.pellet</groupId>
+      <artifactId>pellet-query</artifactId>
+      <version>2.3.6-ansell</version>
+      <licenses>
+        <license>
+          <name>GNU Affero General Public License 3.0</name>
+          <url>http://www.fsf.org/licensing/licenses/agpl-3.0.html</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.6</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>fi.tut.pe.fast</groupId>
+      <artifactId>swrlGrammar</artifactId>
+      <version>0.0.1</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <licenses>
+        <license>
+          <name>Common Public License Version 1.0</name>
+          <url>http://www.opensource.org/licenses/cpl1.0.txt</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>msv</groupId>
+      <artifactId>relaxngDatatype</artifactId>
+      <version>20030225</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-Graph</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-Olingvo-Utilities</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-OntologyService-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-OwlsUtilities</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-Planning</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-ProgrammingUtilities</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-ServiceDescriptionServer</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>orchestrationtools</groupId>
+      <artifactId>orchestrationtools-ServiceModel-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr-runtime</artifactId>
+      <version>3.4</version>
+      <licenses>
+        <!--No license information available. -->
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>stringtemplate</artifactId>
+      <version>3.2.1</version>
+      <licenses>
+        <license>
+          <name>BSD licence</name>
+          <url>http://antlr.org/license.html</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.2.3</version>
+      <licenses>
+        <license>
+          <name>Apache License</name>
+          <url>LICENSE.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpcore</artifactId>
+      <version>4.2.2</version>
+      <licenses>
+        <license>
+          <name>Apache License</name>
+          <url>LICENSE.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-arq</artifactId>
+      <version>2.11.1</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-core</artifactId>
+      <version>2.11.1</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.jena</groupId>
+      <artifactId>jena-iri</artifactId>
+      <version>1.0.1</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <version>1.3</version>
+      <licenses>
+        <license>
+          <name>New BSD License</name>
+          <url>http://www.opensource.org/licenses/bsd-license.php</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.jgrapht</groupId>
+      <artifactId>jgrapht-jdk1.5</artifactId>
+      <version>0.7.3</version>
+      <licenses>
+        <license>
+          <name>GNU Lesser General Public License Version 2.1, February 1999</name>
+          <url>http://jgrapht.sourceforge.net/LGPL.html</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty</artifactId>
+      <version>6.1.22</version>
+      <licenses>
+        <license>
+          <name>Apache Software License - Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+        <license>
+          <name>Eclipse Public License - Version 1.0</name>
+          <url>http://www.eclipse.org/org/documents/epl-v10.php</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>jetty-util</artifactId>
+      <version>6.1.22</version>
+      <licenses>
+        <license>
+          <name>Apache Software License - Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+        <license>
+          <name>Eclipse Public License - Version 1.0</name>
+          <url>http://www.eclipse.org/org/documents/epl-v10.php</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.mortbay.jetty</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5-20081211</version>
+      <licenses>
+        <license>
+          <name>Apache License Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>1.6.4</version>
+      <licenses>
+        <license>
+          <name>MIT License</name>
+          <url>http://www.opensource.org/licenses/mit-license.php</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.4</version>
+      <licenses>
+        <license>
+          <name>MIT License</name>
+          <url>http://www.opensource.org/licenses/mit-license.php</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.6.4</version>
+      <licenses>
+        <license>
+          <name>MIT License</name>
+          <url>http://www.opensource.org/licenses/mit-license.php</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>2.11.0</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>1.4.01</version>
+      <licenses>
+        <license>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+          <distribution>repo</distribution>
+        </license>
+        <license>
+          <name>The SAX License</name>
+          <url>http://www.saxproject.org/copying.html</url>
+          <distribution>repo</distribution>
+        </license>
+        <license>
+          <name>The W3C License</name>
+          <url>http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/java-binding.zip</url>
+          <distribution>repo</distribution>
+        </license>
+      </licenses>
+    </dependency>
+    <dependency>
+      <groupId>xmlunit</groupId>
+      <artifactId>xmlunit</artifactId>
+      <version>1.5</version>
+      <licenses>
+        <license>
+          <name>BSD License</name>
+          <url>http://xmlunit.svn.sourceforge.net/viewvc/*checkout*/xmlunit/trunk/xmlunit/LICENSE.txt</url>
+        </license>
+      </licenses>
+    </dependency>
+  </dependencies>
+</licenseSummary>
