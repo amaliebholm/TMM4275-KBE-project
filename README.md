@@ -60,7 +60,7 @@ To run the code you will need to have a running Fuseki-Server and a correct Owl-
 
 ## Examples of Three Different Product Orders  
 
-### Product Engeneer Setting Parameter Constraints
+### Product Engineer Setting Parameter Constraints
 ![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
 
 
