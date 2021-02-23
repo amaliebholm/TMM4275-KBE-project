@@ -46,36 +46,41 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 ### Code Description 
 
-- `DFAserver.py` - Setting ut the web-page that the customer uses to place an order
-- `manufChecker.py` - Setting ut the web-page that the engineer uses to define the constraints. 
+- `manufChecker.py` - Setting up the web-page which the product engineer uses to define the constraints, sending this to the fuseki server
+- `DFAserver.py` - Setting up the web-page that the customer uses to place an order, chacking it against the constraits given in the fuseki server, if the order is within the constraints, the order is made into a DFA file, visualized in NX
 
 ### OWLs
-- `chair.owl` - File made in Olingvo and uploaded to Fuseki, making the model of the chair availavble, reachable from the web-pages, on the server
+- `chair.owl` - File made in Olingvo, setting the properties(constraints) for the chair, and uploaded to Fuseki, making it reachable from the web-pages
 
-### DAFs
+### DRAs
 - `My_Chair_template.daf` - Containing the NX file of the chair template, this is used as the template which every oderer modify to the customers whishes
 - `My_Chair_Order.daf` - Containing the NX file whith the parameters given by the customer
 
 
-### Examples of 3 product orders 
 
-##### Product Engeneer Setting Parameter Constraints
-![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
+## Examples of 3 product orders 
+
+## Product Engeneer Setting Parameter Constraints
 ![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
 
-##### A Customer Trying to Order Outside the Constraints
+### A Customer Trying to Order Outside the Constraints
 ![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
-![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
 
-##### Example 1 
+
+
+### Example 1 
 ![Ex3%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20orderChair.PNG)
 ![Ex1%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20chair%20NX.PNG)
 
-##### Example 2
+
+
+### Example 2
 ![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
 ![Ex3%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20chair%20NX.PNG)
 
-##### Example 3
+
+
+### Example 3
 ![Ex4%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex4%20-%20orderChair.PNG)
 ![Ex4%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex4%20-%20chair%20NX.PNG)
 
