@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import requests
 
 HOST_NAME = '127.0.0.1' 
-PORT_NUMBER = 4321 # Maybe set this to 1234
+PORT_NUMBER = 4321 #Manufactor server http://127.0.0.1:4321
 
 legLengthMax = 2000
 legLengthMin = 0
@@ -32,7 +32,7 @@ class MyHandler(BaseHTTPRequestHandler):
         
         # Check what is the path
         path = s.path
-        if path.find("/setParamsIntervals") != -1:
+        if path.find("/setParamsIntervals") != -1:#Form to set the manufactor constraints
             s.wfile.write(bytes('<html><body><h2>Valid parameter intervals (mm): </h2><form action="http://127.0.0.1:4321/setParamsIntervals" method="post">', "utf-8"))
             s.wfile.write(bytes('<br>Maximum leg length:<br><input type="text" name="legLengthMax" value="0">', "utf-8"))
             s.wfile.write(bytes('<br>Minimum leg length:<br><input type="text" name="legLengthMin" value="0">', "utf-8"))
@@ -56,27 +56,17 @@ class MyHandler(BaseHTTPRequestHandler):
 
 
     def do_POST(s):
-        global sidePairUp, sidePairLow, depthPairUp, depthPairLow, heightPairUp,  heightPairLow, widthPairUp, widthPairLow, apronPairUp, apronPairLow
 
         
         # Check what is the path
         path = s.path
         print("Path: ", path)
         if path.find("/setParamsIntervals") != -1:
-            #TODO - set intervals for params
             content_len = int(s.headers.get('Content-Length'))
             post_body = s.rfile.read(content_len)
             param_line = post_body.decode()
             print("Body: ", param_line)
-            """
-            #Get the param value
-            pairs = param_line.split("&")
-            legLengthPair = pairs[0].split("=")
-            depthPair = pairs[1].split("=")
-            heightPair = pairs[2].split("=")
-            widthPair = pairs[3].split("=")
-            print(pairs)
-            """
+
             pairs = param_line.split("&")
             legLengthMax = pairs[0].split("=")[1]
             legLengthMin = pairs[1].split("=")[1]
@@ -89,18 +79,18 @@ class MyHandler(BaseHTTPRequestHandler):
             seatWidthMax = pairs[8].split("=")[1]
             seatWidthMin = pairs[9].split("=")[1]
             apronMax = pairs[10].split("=")[1]
-            apronMin = pairs[11].split("=")[1]
+            apronMin = pairs[11].split("=")[1] #Sets all the variables from the form, using split to get all values from the string
             print(pairs)
             print(legLengthMax)
 
             # Replaising old constrains with the new 
             manuf_constraints = ["legLengthMax","legLengthMin", "legWidthMax", "legWidthMin",
                 "backMax", "backMin", "seatDepthMax", "seatDepthMin",
-                "seatWidthMax", "seatWidthMin", "apronMax", "apronMin"]
+                "seatWidthMax", "seatWidthMin", "apronMax", "apronMin"] #Name of all manufactor caonstraints
 
             new_constaints = [legLengthMax, legLengthMin, legWidthMax, legWidthMin,
                 backMax, backMin, seatDepthMax, seatDepthMin,
-                seatWidthMax, seatWidthMin, apronMax, apronMin]
+                seatWidthMax, seatWidthMin, apronMax, apronMin] #Value of all the new constraints
 
             URL = "http://127.0.0.1:3030/kbe/update"
 
@@ -117,16 +107,12 @@ class MyHandler(BaseHTTPRequestHandler):
 
                 # Deleting the current constraint
                 PARAMS = {'update':'PREFIX kbe:<http://www.kbe_chair.com/.owl#> DELETE {?'+ ch +' kbe:'+ manuf_constraints[i] +' ?value.} WHERE {?'+ ch +' kbe:'+ manuf_constraints[i] +' ?value.}'} 
-                
-                #PARAMS = {​​'update':'PREFIX kbe:<http://kbe.openode.io/table-kbe.owl#> DELETE {​​?BackCutter kbe:' + constrain + ' ?min.}​​ WHERE {​​ ?BackCutter kbe:' + constrain +' ?min.}​​'}
 
                 # Sending get request and saving the response as response object 
                 r = requests.post(url = URL, data = PARAMS) 
 
                 # Checking the result
                 print("Result for DELETE:", r.text)
-
-               
 
                 # Inserting the new constraint value
                 PARAMS = {'update': 'PREFIX kbe:<http://www.kbe_chair.com/.owl#> INSERT {?'+ ch +' kbe:'+ manuf_constraints[i] +' " '+ str(new_constaints[i]) +' "^^<http://www.w3.org/2001/XMLSchema#string>.} WHERE {?'+ ch +' a kbe:'+ ch +' .}'} 
@@ -148,7 +134,7 @@ class MyHandler(BaseHTTPRequestHandler):
             s.wfile.write(bytes('<p>The following parameters intervals have arrived. Leg length: ' + str(legLengthMax) + '-' + str(legLengthMin) + 
                 ', leg width: '+ str(legWidthMax) + '-' + str(legWidthMin)  + ', backplate length: '+ str(backMax) + '-' + str(backMin)
                 + ', seat depth: '+ str(seatDepthMax) + '-' + str(seatDepthMin)  + ', seat width: '+ str(seatWidthMax) + '-' + str(seatWidtMin) 
-                + ', apron height: '+ str(apronMax) + '-' + str(apronMin) + '</p>', 'utf-8'))
+                + ', apron height: '+ str(apronMax) + '-' + str(apronMin) + '</p>', 'utf-8')) #Confirmation that the constraints have been set and form with the previous values as suggestion if one would like to change again
             s.wfile.write(bytes('<br>Maximum leg length:<br><input type="text" name="legLengthMax" value="' + str(legLengthMax) + '">', "utf-8"))
             s.wfile.write(bytes('<br>Minimum leg length:<br><input type="text" name="legLengthMin" value="' + str(legLengthMin) + '">', "utf-8"))
             s.wfile.write(bytes('<br>Maximum leg width:<br><input type="text" name="legWidthMax" value="' + str(legWidthMax) + '">', "utf-8"))
