@@ -69,13 +69,13 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 
 ### Example 1 
-![Ex3%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20orderChair.PNG)
+![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
 ![Ex1%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20chair%20NX.PNG)
 
 
 
 ### Example 2
-![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
+![Ex3%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20orderChair.PNG)
 ![Ex3%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20chair%20NX.PNG)
 
 
