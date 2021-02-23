@@ -59,7 +59,23 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 ### Examples of 3 product orders 
 
-### Product Engeneer Setting Constraints
-![Ex1%20-%20setParams.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20setParams.PNG)
+##### Product Engeneer Setting Parameter Constraints
+![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
+![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
 
-#### Example 1 
+##### A Customer Trying to Order Outside the Constraints
+![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
+![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
+
+##### Example 1 
+![Ex3%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20orderChair.PNG)
+![Ex1%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20chair%20NX.PNG)
+
+##### Example 2
+![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
+![Ex3%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20chair%20NX.PNG)
+
+##### Example 3
+![Ex4%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex4%20-%20orderChair.PNG)
+![Ex4%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex4%20-%20chair%20NX.PNG)
+
