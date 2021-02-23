@@ -7,15 +7,45 @@ DefClass: My_Chair_template (ug_base_part);
 	(number parameter) apron_height: <PARAM_APRON>;
     (number parameter) seat_width: <PARAM_SEATWIDTH>;
     (number parameter) seat_depth: <PARAM_SEATDEPTH>;
-    (Canonical Name Parameter Modifiable) color: <PARAM_COLOR>;
-    (Canonical Name Parameter Modifiable) color_seat: <PARAM_SEATCOLOR>;
-
+    (Canonical Name Parameter Modifiable) color_chair: <PARAM_COLOR>;
 
     (number parameter) back_thick: 10;
     (number parameter) seat_thick: 20;
     (number parameter) leg_sidefraction: 30;
     (number parameter) leg_frontfraction: 20;
     (number parameter) apron_thick: 10;
+
+
+(child) seat: 
+    {
+        class, ug_block;
+        Origin, Point(leg_width:,0,leg_length:);
+        length, seat_depth: - leg_width:;
+        width, seat_width:;
+        height, seat_thick:;
+    };
+
+(child) seat_backportion: 
+    {
+        class, ug_block;
+        Origin, Point(0,leg_width: + seat_width:/leg_sidefraction:,leg_length:);
+        length, leg_width:;
+        width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
+        height, seat_thick:;
+        Operation, Unite;
+        Target, {seat:};
+    };
+
+(child) back1: 
+    {
+        class, ug_block;
+        Origin, Point(0,seat_width:/leg_sidefraction:,leg_length:);
+        length, leg_width:;
+        width, leg_width:;
+        height, back_height:;
+        Operation, Unite;
+        Target, {seat:}
+    };
 
 (child) leg1: 
     {
@@ -24,167 +54,155 @@ DefClass: My_Chair_template (ug_base_part);
         length, leg_width:;
         width, leg_width:;
         height, leg_length:;
+        Operation, Unite;
+        Target, {back1:}
     };
 
-    (child) leg2: 
-    {
-        class, ug_block;
-        Origin, Point(0,seat_width: - leg_width: - (seat_width:/leg_sidefraction:),0);
-        length, leg_width:;
-        width, leg_width:;
-        height, leg_length:;
-    };
-
-    (child) leg3: 
-    {
-        class, ug_block;
-        Origin, Point(seat_depth: - leg_width: - (seat_depth:/leg_frontfraction:),(seat_width:/leg_sidefraction:),0);
-        length, leg_width:;
-        width, leg_width:;
-        height, leg_length:;
-    };
-
-    (child) leg4: 
-    {
-        class, ug_block;
-        Origin, Point(seat_depth: - leg_width: - (seat_depth:/leg_frontfraction:),seat_width: - leg_width: - (seat_width:/leg_sidefraction:),0);
-        length, leg_width:;
-        width, leg_width:;
-        height, leg_length:;
-    };
-
-    (child) seat: 
-    {
-        class, ug_block;
-        Origin, Point(0,0,leg_length:);
-        length, seat_depth:;
-        width, seat_width:;
-        height, seat_thick:;
-    };
-
-    (child) rear_spindle:{
-        class, ug_cylinder;
-        diameter, 30;
-        height, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
-        Origin, Point(leg_width:/2,seat_width:/leg_sidefraction: + leg_width:,2*leg_length:/3);
-        Direction, Vector(0,1,0);
-    };
-
-    (child) spindle1:{
-        class, ug_cylinder;
-        diameter, 30;
-        height, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
-        Origin, Point(leg_width:,seat_width:/leg_sidefraction: + leg_width:/2,leg_length:/2);
-        Direction, Vector(1,0,0);
-    };
-
-    (child) spindle2:{
-        class, ug_cylinder;
-        diameter, 30;
-        height, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
-        Origin, Point(leg_width:,seat_width: - seat_width:/leg_sidefraction: - leg_width:/2,leg_length:/2);
-        Direction, Vector(1,0,0);
-    };
-
-    (child) front_apron: 
-    {
-        class, ug_block;
-        Origin, Point(seat_depth: - seat_depth:/leg_frontfraction: - leg_width:/2,leg_width: + seat_width:/leg_sidefraction:,leg_length: - apron_height:);
-        width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
-        length, 10;
-        height, apron_height:;
-    };
-
-    (child) apron1: 
-    {
-        class, ug_block;
-        Origin, Point(leg_width:,leg_width:/2 + seat_width:/leg_sidefraction: -apron_thick:/2,leg_length:-apron_height:);
-        length, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
-        width, apron_thick:;
-        height, apron_height:;
-    };
-
-    (child) apron2: 
-    {
-        class, ug_block;
-        Origin, Point(leg_width:,seat_width: - leg_width:/2 - seat_width:/leg_sidefraction:-apron_thick:/2,leg_length:-apron_height:);
-        length, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
-        width, apron_thick:;
-        height, apron_height:;
-    };
-
-    (child) apron2: 
-    {
-        class, ug_block;
-        Origin, Point(leg_width:,seat_width: - leg_width:/2 - seat_width:/leg_sidefraction:-apron_thick:/2,leg_length:-apron_height:);
-        length, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
-        width, apron_thick:;
-        height, apron_height:;
-    };
-
-    (child) cube1: # To remove part of seat where the legs meet the backplate
-    {
-        class, ug_block;
-        Origin, Point(0,0,leg_length:);
-        length, leg_width:;
-        width, leg_width: + seat_width:/leg_sidefraction:;
-        height, seat_thick:;
-        Operation, Subtract;
-		Target, {seat:};
-    };
-
-    (child) cube2: # To remove part of seat where the legs meet the backplate
-    {
-        class, ug_block;
-        Origin, Point(0,seat_width: - leg_width: - seat_width:/leg_sidefraction:,leg_length:);
-        length, leg_width:;
-        width, leg_width: + seat_width:/leg_sidefraction:;
-        height, seat_thick:;
-        Operation, Subtract;
-		Target, {seat:};
-    };
-
-    (child) back1: 
-    {
-        class, ug_block;
-        Origin, Point(0,seat_width:/leg_sidefraction:,leg_length:);
-        length, leg_width:;
-        width, leg_width:;
-        height, back_height:;
-    };
-
-    (child) back2: 
+(child) back2: 
     {
         class, ug_block;
         Origin, Point(0,seat_width: - seat_width:/leg_sidefraction: - leg_width:,leg_length:);
         length, leg_width:;
         width, leg_width:;
         height, back_height:;
+        Operation, Unite;
+        Target, {seat:}
     };
 
-    (child) backsupport1: 
+(child) leg2: 
+    {
+        class, ug_block;
+        Origin, Point(0,seat_width: - leg_width: - (seat_width:/leg_sidefraction:),0);
+        length, leg_width:;
+        width, leg_width:;
+        height, leg_length:;
+        Operation, Unite;
+        Target, {back2:}
+    };
+
+(child) leg3: 
+    {
+        class, ug_block;
+        Origin, Point(seat_depth: - leg_width: - (seat_depth:/leg_frontfraction:),(seat_width:/leg_sidefraction:),0);
+        length, leg_width:;
+        width, leg_width:;
+        height, leg_length:;
+        Operation, Unite;
+        Target, {seat:}
+    };
+
+(child) leg4: 
+    {
+        class, ug_block;
+        Origin, Point(seat_depth: - leg_width: - (seat_depth:/leg_frontfraction:),seat_width: - leg_width: - (seat_width:/leg_sidefraction:),0);
+        length, leg_width:;
+        width, leg_width:;
+        height, leg_length:;
+        Operation, Unite;
+        Target, {seat:}
+    };
+
+(child) rear_spindle:{
+        class, ug_cylinder;
+        diameter, 30;
+        height, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
+        Origin, Point(leg_width:/2,seat_width:/leg_sidefraction: + leg_width:,2*leg_length:/3);
+        Direction, Vector(0,1,0);
+        Operation, Unite;
+        Target, {leg1:}
+    };
+
+(child) spindle1:{
+        class, ug_cylinder;
+        diameter, 30;
+        height, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
+        Origin, Point(leg_width:,seat_width:/leg_sidefraction: + leg_width:/2,leg_length:/2);
+        Direction, Vector(1,0,0);
+        Operation, Unite;
+        Target, {leg1:}
+    };
+
+(child) spindle2:{
+        class, ug_cylinder;
+        diameter, 30;
+        height, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
+        Origin, Point(leg_width:,seat_width: - seat_width:/leg_sidefraction: - leg_width:/2,leg_length:/2);
+        Direction, Vector(1,0,0);
+        Operation, Unite;
+        Target, {leg2:}
+    };
+
+(child) front_apron: 
+    {
+        class, ug_block;
+        Origin, Point(seat_depth: - seat_depth:/leg_frontfraction: - leg_width:/2,leg_width: + seat_width:/leg_sidefraction:,leg_length: - apron_height:);
+        width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
+        length, 10;
+        height, apron_height:;
+        Operation, Unite;
+        Target, {seat:}
+    };
+
+(child) apron1: 
+    {
+        class, ug_block;
+        Origin, Point(leg_width:,leg_width:/2 + seat_width:/leg_sidefraction: -apron_thick:/2,leg_length:-apron_height:);
+        length, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
+        width, apron_thick:;
+        height, apron_height:;
+        Operation, Unite;
+        Target, {seat:}
+    };
+
+(child) apron2: 
+    {
+        class, ug_block;
+        Origin, Point(leg_width:,seat_width: - leg_width:/2 - seat_width:/leg_sidefraction:-apron_thick:/2,leg_length:-apron_height:);
+        length, seat_depth: - 2*leg_width: - seat_depth:/leg_frontfraction:;
+        width, apron_thick:;
+        height, apron_height:;
+        Operation, Unite;
+        Target, {seat:}
+    };
+
+(child) backsupport1: 
     {
         class, ug_block;
         Origin, Point(leg_width:/2 - back_thick:/2, seat_width:/leg_sidefraction: + leg_width:,leg_length: + 1.5*back_height:/7);
         length, back_thick:;
         width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
         height, back_height:/7;
+        Operation, Unite;
+        Target, {back1:}
     };
 
-    (child) backsupport2: 
+(child) backsupport2: 
     {
         class, ug_block;
         Origin, Point(leg_width:/2 - back_thick:/2, seat_width:/leg_sidefraction: + leg_width:,leg_length: + 3.5*back_height:/7);
         length, back_thick:;
         width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
         height, back_height:/7;
+        Operation, Unite;
+        Target, {back1:}
     };
 
-    (child) backsupport3: 
+(child) backsupport3: 
     {
         class, ug_block;
         Origin, Point(leg_width:/2 - back_thick:/2, seat_width:/leg_sidefraction: + leg_width:,leg_length: + 5.5* back_height:/7);
         length, back_thick:;
         width, seat_width: - 2*leg_width: - 2*seat_width:/leg_sidefraction:;
         height, back_height:/7;
+        Operation, Unite;
+        Target, {back1:}
     };
+  
+
+(Child) colored:
+    {
+     Class, ug_body;
+     Feature, {leg1:};
+     Layer, 1;
+     color, ug_askClosestColor(color_chair:);
+    };  
