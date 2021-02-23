@@ -41,20 +41,20 @@ This is an ULM sketch, showing how an order making scenario will play out. From 
 
 This code was made using python in Visual Studio Code. Knowledge Fusion was used in NX to make models of the chair and Olingvo and Apache Jena Fuseki was used to communicate with the server containing the parameters, set by both the customer and the product engineer. 
 
-To run the code you will need to hace a running Fuseki-Server and an correct Owl-file (in the Owl-folder) uploaded to the server. You also need tho change the paths in the code, to match the paths on yor own computer. 
+To run the code you will need to have a running Fuseki-Server and a correct Owl-file (in the Owl-folder) uploaded to the server. You also need to change the paths in the code, to match the paths on your own computer. 
 
 
 ### Code Description 
 
 - `manufChecker.py` - Setting up the web-page which the product engineer uses to define the constraints, sending this to the fuseki server
-- `DFAserver.py` - Setting up the web-page that the customer uses to place an order, chacking it against the constraits given in the fuseki server, if the order is within the constraints, the order is made into a DFA file, visualized in NX
+- `DFAserver.py` - Setting up the web-page that the customer uses to place an order, checking it against the constraits given in the fuseki server, if the order is within the constraints, the order is made into a DFA file, visualized in NX
 
 ### OWLs
 - `chair.owl` - File made in Olingvo, setting the properties(constraints) for the chair, and uploaded to Fuseki, making it reachable from the web-pages
 
-### DRAs
-- `My_Chair_template.daf` - Containing the NX file of the chair template, this is used as the template which every oderer modify to the customers whishes
-- `My_Chair_Order.daf` - Containing the NX file whith the parameters given by the customer
+### DFAs
+- `My_Chair_template.dfa` - Containing the NX file of the chair template, this is used as the template which every oderer modify to the customers wishes
+- `My_Chair_Order.dfa` - Containing the NX file whith the parameters given by the customer
 
 
 
