@@ -46,15 +46,20 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 ### Code Description 
 
-- `httpServer.py` - Setting ut the web-page that the customer uses to place an order
-- `manudChecker.py` - Setting ut the web-page that the engineer uses to define the constraints. 
-- .. 
+- `DFAserver.py` - Setting ut the web-page that the customer uses to place an order
+- `manufChecker.py` - Setting ut the web-page that the engineer uses to define the constraints. 
 
 ### OWLs
 - `chair.owl` - File made in Olingvo and uploaded to Fuseki, making the model of the chair availavble, reachable from the web-pages, on the server
 
 ### DAFs
 - `My_Chair_template.daf` - Containing the NX file of the chair template, this is used as the template which every oderer modify to the customers whishes
+- `My_Chair_Order.daf` - Containing the NX file whith the parameters given by the customer
 
 
-### Examples of 3 product orders
+### Examples of 3 product orders 
+
+### Product Engeneer Setting Constraints
+![Ex1%20-%20setParams.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20setParams.PNG)
+
+#### Example 1 
