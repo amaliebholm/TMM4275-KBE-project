@@ -18,103 +18,103 @@
   <owl:Class rdf:about="http://www.kbe_chair.com/.owl#Apron">
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </owl:Class>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#legWidthMin">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#legWidthMin">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Leg"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#legWidthMax">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#legWidthMax">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Leg"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#backMin">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#backMin">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Backplate"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#seatDepthMax">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#seatDepthMax">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Seat"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#legLengthMax">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#legLengthMax">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Leg"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#apronMin">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#apronMin">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Apron"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#seatWidthMax">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#seatWidthMax">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Seat"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#legLengthMin">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#legLengthMin">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Leg"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#seatDepthMin">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Seat"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#seatWidthMin">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#seatDepthMin">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Seat"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#backMax">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#seatWidthMin">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Seat"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#backMax">
     <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Backplate"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
-  <rdf:Property rdf:about="http://www.kbe_chair.com/.owl#apronMax">
-    <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Apron"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Property>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.kbe_chair.com/.owl#apronMax">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.kbe_chair.com/.owl#Apron"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
   <Seat rdf:about="http://www.kbe_chair.com/.owl#seat_1">
-    <seatWidthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >200</seatWidthMin>
-    <seatWidthMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >1000</seatWidthMax>
-    <seatDepthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >200</seatDepthMin>
     <seatDepthMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >1000</seatDepthMax>
+    <seatDepthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >200</seatDepthMin>
+    <seatWidthMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1000</seatWidthMax>
+    <seatWidthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >200</seatWidthMin>
   </Seat>
-  <owl:DataRange>
-    <owl:oneOf rdf:parseType="Resource">
-      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-      ></rdf:first>
-      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    </owl:oneOf>
-  </owl:DataRange>
   <Apron rdf:about="http://www.kbe_chair.com/.owl#apron_1">
-    <apronMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >20</apronMin>
     <apronMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >200</apronMax>
+    <apronMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >20</apronMin>
   </Apron>
   <Leg rdf:about="http://www.kbe_chair.com/.owl#leg_1">
-    <legWidthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >40</legWidthMin>
-    <legWidthMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >200</legWidthMax>
-    <legLengthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >500</legLengthMin>
     <legLengthMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >2000</legLengthMax>
+    <legLengthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >500</legLengthMin>
+    <legWidthMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >200</legWidthMax>
+    <legWidthMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >40</legWidthMin>
   </Leg>
+  <owl:DataRange>
+    <owl:oneOf rdf:parseType="Resource">
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+      ></rdf:first>
+    </owl:oneOf>
+  </owl:DataRange>
   <Backplate rdf:about="http://www.kbe_chair.com/.owl#backplate_1">
-    <backMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >400</backMin>
     <backMax rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >2000</backMax>
+    <backMin rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >400</backMin>
   </Backplate>
 </rdf:RDF>
