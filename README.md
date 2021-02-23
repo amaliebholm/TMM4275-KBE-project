@@ -58,7 +58,7 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 
 
-## Examples of 3 product orders 
+## Examples of Three Different Product Orders  
 
 ### Product Engeneer Setting Parameter Constraints
 ![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
@@ -69,19 +69,19 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 
 
-### Example 1 
-![Ex1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20orderChair.PNG)
+### Example 1 - Landscape Green 
+![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
 ![Ex1%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20chair%20NX.PNG)
 
 
 
-### Example 2
+### Example 2 - Flaming Red 
 ![Ex3%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20orderChair.PNG)
 ![Ex3%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex3%20-%20chair%20NX.PNG)
 
 
 
-### Example 3
+### Example 3 - Icy Blue
 ![Ex4%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex4%20-%20orderChair.PNG)
 ![Ex4%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex4%20-%20chair%20NX.PNG)
 
