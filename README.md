@@ -60,8 +60,9 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 ## Examples of 3 product orders 
 
-## Product Engeneer Setting Parameter Constraints
+### Product Engeneer Setting Parameter Constraints
 ![E1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/E1%20-%20orderChair.PNG)
+
 
 ### A Customer Trying to Order Outside the Constraints
 ![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
@@ -69,7 +70,7 @@ To run the code you will need to hace a running Fuseki-Server and an correct Owl
 
 
 ### Example 1 
-![Ex2%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex2%20-%20orderChair.PNG)
+![Ex1%20-%20orderChair.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20orderChair.PNG)
 ![Ex1%20-%20chair%20NX.PNG](https://github.com/amaliebholm/TMM4275-KBE-project/blob/main/Images/Ex1%20-%20chair%20NX.PNG)
 
 
