@@ -17,6 +17,7 @@ HOST_NAME = '127.0.0.1'  # locathost - http://127.0.0.1
 PORT_NUMBER = 1234
 
 dfaPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\DFAs\\"
+pythonPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\"
 
 f = open(dfaPath + "templates\\My_Chair_template.dfa", "r")
 fileContent = f.read()
@@ -33,26 +34,48 @@ class MyHandler(BaseHTTPRequestHandler):
 
     def do_GET(s):
         """Respond to a GET request."""
-        s.send_response(200)
-        s.send_header("Content-type", "text/html")
-        s.end_headers()
 
         # Check what is the path
         path = s.path
         if path.find("/") != -1 and len(path) == 1:
+            s.send_response(200)
+            s.send_header("Content-type", "text/html")
+            s.end_headers()
+
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
                 bytes("<body><p>Current path: " + path + "</p>", "utf-8"))
             s.wfile.write(bytes('</body></html>', "utf-8"))
+        
         elif path.find("/info") != -1:
+            s.send_response(200)
+            s.send_header("Content-type", "text/html")
+            s.end_headers()
+
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
                 bytes("<body><p>Current path: " + path + "</p>", "utf-8"))
             s.wfile.write(bytes("<body><p>Let's order a chair</p>", "utf-8"))
             s.wfile.write(bytes('</body></html>', "utf-8"))
+        
+        elif path.find("/theProduct.png") != -1:
+            s.send_response(200)
+            s.send_header("Content-type", "image/png")
+            s.end_headers()
+            # Read the file
+            # Write the file
+            bReader = open(pythonPath + "theProduct.png", "rb")
+            theImg = bReader.read()
+            print(theImg)
+            s.wfile.write(theImg)
+        
         elif path.find("/orderChair") != -1:
+            s.send_response(200)
+            s.send_header("Content-type", "text/html")
+            s.end_headers()
+
             s.wfile.write(bytes('<html><body><h2>Set chair specifications (mm):</h2>', "utf-8"))
             s.wfile.write(bytes('<form action="/orderChair" method="post">', 'utf-8'))
             s.wfile.write(bytes('<br>Legs length:<br><input type="text" name="leg_length" value="0">', "utf-8"))
@@ -61,11 +84,15 @@ class MyHandler(BaseHTTPRequestHandler):
             s.wfile.write(bytes('<br>Seat length:<br><input type="text" name="seat_length" value="0">', "utf-8"))
             s.wfile.write(bytes('<br>Seat width:<br><input type="text" name="seat_width" value="0">', "utf-8"))
             s.wfile.write(bytes('<br>Apron height:<br><input type="text" name="apron_height" value="0">', "utf-8"))
-            s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="1">Forrest Brown</option><option value="2">Icy Blue</option><option value="3">Flaming Red</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-            s.wfile.write(bytes('<br>Seat colour:<br><select name="seat_colour" id="seat_colour"><option value="3">Flaming Red</option><option value="2">Icy Blue</option><option value="5">Landscape Green</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-            s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
-            s.wfile.write(bytes('<img src="https://raw.githubusercontent.com/amaliebholm/TMM4275-KBE-project/amalie_test/chair.jpg" width="252" height="400">', "utf-8"))
+            s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="LIGHT_HARD_GREEN">Landscape Green</option><option value="CYAN">Icy Blue</option><option value="LIGHT_RED_ORANGE">Flaming Red</option><option value="LIGHT_FADED_YELLOW">Lightning Yellow</option></select>', "utf-8"))
+            s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p>', "utf-8"))
+            s.wfile.write(bytes('<h3> A model of your chair:</h3>', "utf-8"))
+            s.wfile.write(bytes('<img src="theProduct.png" width="400" height="275"></body></html>', "utf-8"))
+        
         else:
+            s.send_response(200)
+            s.send_header("Content-type", "text/html")
+            s.end_headers()
             s.wfile.write(
                 bytes('<html><head><title>Cool interface.</title></head>', 'utf-8'))
             s.wfile.write(
@@ -113,8 +140,7 @@ class MyHandler(BaseHTTPRequestHandler):
             seat_length = int(newSplit[3][1])
             seat_width = int(newSplit[4][1])
             apron_heigth = int(newSplit[5][1])
-            chair_colour = int(newSplit[6][1])
-            seat_colour = int(newSplit[7][1])
+            chair_colour = newSplit[6][1]
 
             manuf_constraints = ["legLengthMax","legLengthMin", "legWidthMax", "legWidthMin",
                 "backMax", "backMin", "seatDepthMax", "seatDepthMin",
@@ -129,12 +155,12 @@ class MyHandler(BaseHTTPRequestHandler):
                 data = r.json()
                 manuf_results.append(int(data['results']['bindings'][0]['data']['value']))
                 print(c, data['results']['bindings'][0]['data']['value'])
-            if leg_length < manuf_results[0] and leg_length > manuf_results[1]:
-                if leg_width < manuf_results[2] and leg_width > manuf_results[3]:
-                    if height_backplate < manuf_results[4] and height_backplate > manuf_results[5]:
-                        if seat_length < manuf_results[6] and seat_length > manuf_results[7]:
-                            if seat_width < manuf_results[8] and seat_width > manuf_results[9]:
-                                if apron_heigth < manuf_results[10] and apron_heigth > manuf_results[11]:
+            if leg_length <= manuf_results[0] and leg_length >= manuf_results[1]:
+                if leg_width <= manuf_results[2] and leg_width >= manuf_results[3]:
+                    if height_backplate <= manuf_results[4] and height_backplate >= manuf_results[5]:
+                        if seat_length <= manuf_results[6] and seat_length >= manuf_results[7]:
+                            if seat_width <= manuf_results[8] and seat_width >= manuf_results[9]:
+                                if apron_heigth <= manuf_results[10] and apron_heigth >= manuf_results[11]:
                                     print("Params OK")
                                     within_constraints = True
 
@@ -156,11 +182,10 @@ class MyHandler(BaseHTTPRequestHandler):
                 s.wfile.write(bytes('<br>Seat length:<br><input type="text" name="seat_length" value="' + str(seat_length) + '">', "utf-8"))
                 s.wfile.write(bytes('<br>Seat width:<br><input type="text" name="seat_width" value="' + str(seat_width) + '">', "utf-8"))
                 s.wfile.write(bytes('<br>Apron height:<br><input type="text" name="apron_height" value="' + str(apron_heigth) + '">', "utf-8"))
-                s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="1">Forrest Brown</option><option value="2">Icy Blue</option><option value="3">Flaming Red</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-                s.wfile.write(bytes('<br>Seat colour:<br><select name="seat_colour" id="seat_colour"><option value="3">Flaming Red</option><option value="2">Icy Blue</option><option value="5">Landscape Green</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-                s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
-                s.wfile.write(bytes('<img src="https://raw.githubusercontent.com/amaliebholm/TMM4275-KBE-project/amalie_test/chair.jpg" width="252" height="400">', "utf-8"))
-
+                s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="LIGHT_HARD_GREEN">Landscape Green</option><option value="CYAN">Icy Blue</option><option value="LIGHT_RED_ORANGE">Flaming Red</option><option value="LIGHT_FADED_YELLOW">Lightning Yellow</option></select>', "utf-8"))
+                s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p>', "utf-8"))
+                s.wfile.write(bytes('<h3> A model of your chair:</h3>', "utf-8"))
+                s.wfile.write(bytes('<img src="theProduct.png" alt="Image of the product" width="400" height="275"></body></html>', "utf-8"))
 
                 fileContentOut = fileContent
                 fileContentOut = fileContentOut.replace("My_Chair_template (ug_base_part)", "My_Chair_Order (ug_base_part)")
@@ -171,7 +196,6 @@ class MyHandler(BaseHTTPRequestHandler):
                 fileContentOut = fileContentOut.replace("<PARAM_SEATWIDTH>", str(seat_width))
                 fileContentOut = fileContentOut.replace("<PARAM_SEATDEPTH>", str(seat_length))
                 fileContentOut = fileContentOut.replace("<PARAM_COLOR>", str(chair_colour))
-                fileContentOut = fileContentOut.replace("<PARAM_SEATCOLOR>", str(seat_colour))
                 
 
                 f = open(dfaPath + "My_Chair_Order.dfa", "w")
@@ -189,10 +213,10 @@ class MyHandler(BaseHTTPRequestHandler):
                 s.wfile.write(bytes('<br>Seat length:<br><input type="text" name="seat_length" value="0">', "utf-8"))
                 s.wfile.write(bytes('<br>Seat width:<br><input type="text" name="seat_width" value="0">', "utf-8"))
                 s.wfile.write(bytes('<br>Apron height:<br><input type="text" name="apron_height" value="0">', "utf-8"))
-                s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="1">Forrest Brown</option><option value="2">Icy Blue</option><option value="3">Flaming Red</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-                s.wfile.write(bytes('<br>Seat colour:<br><select name="seat_colour" id="seat_colour"><option value="3">Flaming Red</option><option value="2">Icy Blue</option><option value="5">Landscape Green</option><option value="4">Lightning Yellow</option></select>', "utf-8"))
-                s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p></body></html>', "utf-8"))
-                s.wfile.write(bytes('<img src="https://raw.githubusercontent.com/amaliebholm/TMM4275-KBE-project/amalie_test/chair.jpg" width="252" height="400">', "utf-8"))
+                s.wfile.write(bytes('<br>Chair colour:<br><select name="chair_colour" id="chair_colour"><option value="LIGHT_HARD_GREEN">Landscape Green</option><option value="CYAN">Icy Blue</option><option value="LIGHT_RED_ORANGE">Flaming Red</option><option value="LIGHT_FADED_YELLOW">Lightning Yellow</option></select>', "utf-8"))
+                s.wfile.write(bytes('<br><br><input type="submit" value="Submit"></form><p> Click "Submit" to send order.</p>', "utf-8"))
+                s.wfile.write(bytes('<h3> A model of your chair:</h3>', "utf-8"))
+                s.wfile.write(bytes('<img src="theProduct.png" width="400" height="275"></body></html>', "utf-8"))
                 print("Params not OK")
 
                 

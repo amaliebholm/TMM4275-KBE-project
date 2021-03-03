@@ -1,7 +1,7 @@
 #! NX/KF 4.0
 DefClass: My_Chair_Order (ug_base_part);
     #Parameters for the chair
-    (number parameter) leg_length: 400; # Outer side of the chair
+    (number parameter) leg_length: 300; # Outer side of the chair
 	(number parameter) leg_width: 20;
 	(number parameter) back_height: 400;
 	(number parameter) apron_height: 30;
