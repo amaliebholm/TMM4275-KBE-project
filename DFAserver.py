@@ -16,10 +16,13 @@ HOST_NAME = '127.0.0.1'  # locathost - http://127.0.0.1
 # Maybe set this to 1234 / So, complete address would be: http://127.0.0.1:1234
 PORT_NUMBER = 1234
 
-dfaPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\DFAs\\"
-pythonPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\"
+# dfaPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\" Windows
+# pythonPath = "C:\\Users\\Amalie\\Documents\\GitHub\\TMM4275-KBE-project\\" Windowa
 
-f = open(dfaPath + "templates\\My_Chair_template.dfa", "r")
+dfaPath = "\\Users\\eier\\Documents\\GitHub\\TMM4275\\templates\\"
+pythonPath = "\\Users\\eier\\Documents\\GitHub\\TMM4275\\"
+
+f = open(dfaPath + "myChairTemplate.dfa", "r")
 fileContent = f.read()
 f.close()
 
